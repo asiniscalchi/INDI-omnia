@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.0.1)
 
 project(indi-omnia LANGUAGES CXX)
 
@@ -7,6 +7,8 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
 find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+
+add_subdirectory(external)
 
 add_executable(${PROJECT_NAME} "main.cpp" "qml.qrc")
 
