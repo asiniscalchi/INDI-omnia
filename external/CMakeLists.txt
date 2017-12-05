@@ -31,3 +31,5 @@ add_library(indiclient
     )
 
 target_link_libraries(indiclient Qt5::Network)
+target_include_directories(indiclient INTERFACE indi/libindi)
+target_include_directories(indiclient INTERFACE indi/libindi/libs)
