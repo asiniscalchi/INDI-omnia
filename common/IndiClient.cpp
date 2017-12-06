@@ -7,8 +7,14 @@ IndiClient::IndiClient(QObject *parent) : INDI::BaseClientQt(parent)
 
 bool IndiClient::connect(const QString &host, int port)
 {
+    emit message("(II) connecting to host " + host + " port " + QString::number(port));
     setServer(host.toStdString().c_str(), port);
-    return connectServer();
+    bool ans = connectServer();
+
+    if (!ans)
+        emit message("(EE) can't connect");
+
+    return ans;
 }
 
 bool IndiClient::isConnected() const
@@ -18,6 +24,7 @@ bool IndiClient::isConnected() const
 
 void IndiClient::disconnect()
 {
+    emit message("(II) disconnecting from host");
     disconnectServer();
 }
 
@@ -64,12 +71,14 @@ void IndiClient::newMessage(INDI::BaseDevice *dp, int messageID)
 
 void IndiClient::serverConnected()
 {
+    emit message("(INDI) server connected");
     mConnected = true;
     emit connectedChanged(mConnected);
 }
 
 void IndiClient::serverDisconnected(int exit_code)
 {
+    emit message("(INDI) server disconnected (code=" + QString::number(exit_code) + ")");
     mConnected = false;
     emit connectedChanged(mConnected);
 }
