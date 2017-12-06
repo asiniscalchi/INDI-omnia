@@ -7,3 +7,5 @@ add_library(common
     )
 
 target_link_libraries(common indiclient)
+
+add_subdirectory(test)
