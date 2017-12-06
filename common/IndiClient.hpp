@@ -11,12 +11,6 @@ class IndiClient : public INDI::BaseClientQt
 public:
     explicit IndiClient(QObject *parent = nullptr);
 
-signals:
-
-public slots:
-
-    // INDI::BaseMediator interface
-public:
     void newDevice(INDI::BaseDevice *dp) override;
     void removeDevice(INDI::BaseDevice *dp) override;
     void newProperty(INDI::Property *property) override;
