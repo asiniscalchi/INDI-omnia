@@ -1,5 +1,7 @@
 #include "IndiClient.hpp"
 
+#include "indibase/basedevice.h"
+
 IndiClient::IndiClient(QObject *parent) : INDI::BaseClientQt(parent)
 {
 
@@ -30,17 +32,17 @@ void IndiClient::disconnect()
 
 void IndiClient::newDevice(INDI::BaseDevice *dp)
 {
-    emit message("(INDI) newDevice");
+    emit message("(INDI) newDevice: " + QString(dp->getDeviceName()));
 }
 
 void IndiClient::removeDevice(INDI::BaseDevice *dp)
 {
-    emit message("(INDI) removeDevice");
+    emit message("(INDI) removeDevice: " + QString(dp->getDeviceName()));
 }
 
 void IndiClient::newProperty(INDI::Property *property)
 {
-    emit message("(INDI) newProperty");
+    emit message("(INDI) newProperty (" + QString(property->getDeviceName()) + "): " + QString(property->getName()));
 }
 
 void IndiClient::removeProperty(INDI::Property *property)
@@ -75,7 +77,7 @@ void IndiClient::newLight(ILightVectorProperty *lvp)
 
 void IndiClient::newMessage(INDI::BaseDevice *dp, int messageID)
 {
-    emit message("(INDI) newMessage");
+    emit message("(INDI) newMessage: " + QString(dp->getDeviceName()));
 }
 
 void IndiClient::serverConnected()
