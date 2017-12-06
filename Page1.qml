@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.3
 Item {
     id: item1
     RowLayout {
+        id: prova
         anchors.horizontalCenter: parent.horizontalCenter
         spacing: 2.8
         anchors.topMargin: 20
@@ -13,13 +14,13 @@ Item {
         TextField {
             id: hostTextField
             text: "localhost"
-            placeholderText: qsTr("Text Field")
+            placeholderText: qsTr("host")
         }
 
         TextField {
             id: portTextField
             text: "7624"
-            placeholderText: qsTr("Text Field")
+            placeholderText: qsTr("port")
         }
 
         Button {
@@ -32,14 +33,26 @@ Item {
         }
     }
 
-    TextArea
-    {
-        id: logTextArea
-        verticalAlignment: Text.AlignTop
-        readOnly: true
-        Connections {
-            target: indiClient
-            onMessage: logTextArea.append(msg)
+    Rectangle {
+        color: "#000000"
+        anchors.top: prova.bottom
+        anchors.topMargin: 20
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+
+        TextArea
+        {
+            anchors.fill: parent
+            id: logTextArea
+            verticalAlignment: Text.AlignTop
+            readOnly: true
+            color: "green"
+
+            Connections {
+                target: indiClient
+                onMessage: logTextArea.append(msg)
+            }
         }
     }
 }
