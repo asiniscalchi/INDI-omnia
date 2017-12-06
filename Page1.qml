@@ -5,36 +5,30 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 
 Item {
-    property alias textField1: textField1
-    property alias button1: button1
-
     RowLayout {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.topMargin: 20
         anchors.top: parent.top
 
         TextField {
-            id: textField1
+            id: ipTextField
             text: "ip address"
             placeholderText: qsTr("Text Field")
         }
 
         TextField {
-            id: textField2
+            id: portTextField
             text: "port"
             placeholderText: qsTr("Text Field")
         }
 
         Button {
-            id: button1
-            text: qsTr("Connect")
+            id: connectButton
+            text: checked ? qsTr("Disconnect") : qsTr("Connect")
             spacing: -3
             checkable: true
+            onClicked: console.log("Button Pressed. Entered text: " + ipTextField.text);
         }
-    }
-
-    button1.onClicked: {
-        console.log("Button Pressed. Entered text: " + textField1.text);
     }
 }
 
