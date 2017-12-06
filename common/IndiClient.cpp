@@ -5,6 +5,22 @@ IndiClient::IndiClient(QObject *parent) : INDI::BaseClientQt(parent)
 
 }
 
+bool IndiClient::connect(const QString &host, int port)
+{
+    setServer(host.toStdString().c_str(), port);
+    return connectServer();
+}
+
+bool IndiClient::isConnected() const
+{
+    return mConnected;
+}
+
+void IndiClient::disconnect()
+{
+    disconnectServer();
+}
+
 
 void IndiClient::newDevice(INDI::BaseDevice *dp)
 {
@@ -48,8 +64,12 @@ void IndiClient::newMessage(INDI::BaseDevice *dp, int messageID)
 
 void IndiClient::serverConnected()
 {
+    mConnected = true;
+    emit connectedChanged(mConnected);
 }
 
 void IndiClient::serverDisconnected(int exit_code)
 {
+    mConnected = false;
+    emit connectedChanged(mConnected);
 }

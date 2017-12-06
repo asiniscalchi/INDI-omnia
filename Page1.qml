@@ -11,7 +11,7 @@ Item {
         anchors.top: parent.top
 
         TextField {
-            id: ipTextField
+            id: hostTextField
             text: "ip address"
             placeholderText: qsTr("Text Field")
         }
@@ -25,9 +25,10 @@ Item {
         Button {
             id: connectButton
             text: checked ? qsTr("Disconnect") : qsTr("Connect")
+            checked: indiClient.connected
             spacing: -3
-            checkable: true
-            onClicked: console.log("Button Pressed. Entered text: " + ipTextField.text);
+            checkable: false
+            onClicked: indiClient ? indiClient.connect(hostTextField.text, portTextField.text) : indiClient.disconnect()
         }
     }
 }
