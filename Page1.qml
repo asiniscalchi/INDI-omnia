@@ -1,5 +1,5 @@
 import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 
 Item {
@@ -41,19 +41,23 @@ Item {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
 
-        TextArea
-        {
+        ScrollView {
             anchors.fill: parent
-            id: logTextArea
-            verticalAlignment: Text.AlignTop
-            readOnly: true
-            color: "green"
 
-            Connections {
-                target: indiClient
-                onMessage: logTextArea.append(msg)
+            TextArea
+            {
+                id: logTextArea
+                verticalAlignment: Text.AlignTop
+                readOnly: true
+                color: "green"
+
+                Connections {
+                    target: indiClient
+                    onMessage: logTextArea.append(msg)
+                }
             }
         }
+
     }
 }
 
