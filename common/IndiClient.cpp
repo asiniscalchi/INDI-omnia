@@ -57,17 +57,17 @@ void IndiClient::newBLOB(IBLOB *bp)
 
 void IndiClient::newSwitch(ISwitchVectorProperty *svp)
 {
-    emit message("(INDI) newSwitch");
+    emit message("(INDI) newSwitch (" + QString(svp->device) + "): " + QString(svp->name));
 }
 
 void IndiClient::newNumber(INumberVectorProperty *nvp)
 {
-    emit message("(INDI) newNumber");
+    emit message("(INDI) newNumber (" + QString(nvp->device) + "): " + QString(nvp->name));
 }
 
 void IndiClient::newText(ITextVectorProperty *tvp)
 {
-    emit message("(INDI) newText");
+    emit message("(INDI) newText (" + QString(tvp->device) + "): " + QString(tvp->name));
 }
 
 void IndiClient::newLight(ILightVectorProperty *lvp)
