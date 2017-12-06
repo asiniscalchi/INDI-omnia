@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.1)
 
-project(indi-omnia LANGUAGES CXX)
+project(indi-omnia LANGUAGES CXX C)
 
 enable_testing()
 
@@ -15,4 +15,9 @@ add_subdirectory(common)
 
 add_executable(${PROJECT_NAME} "main.cpp" "qml.qrc")
 
-target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Quick)
+target_link_libraries(${PROJECT_NAME}
+    Qt5::Core
+    Qt5::Quick
+    common
+    indiclient
+    )

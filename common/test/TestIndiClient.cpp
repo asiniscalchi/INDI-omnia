@@ -1,8 +1,10 @@
 #include "TestIndiClient.hpp"
 
-TestIndiClient::TestIndiClient()
-{
+#include "IndiClient.hpp"
 
+void TestIndiClient::instantiate()
+{
+    IndiClient client;
 }
 
 QTEST_MAIN(TestIndiClient)

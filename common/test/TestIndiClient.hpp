@@ -7,8 +7,8 @@ class TestIndiClient : public QObject
 {
     Q_OBJECT
 
-public:
-    TestIndiClient();
+private slots:
+    void instantiate();
 };
 
 #endif // TESTINDICLIENT_HPP

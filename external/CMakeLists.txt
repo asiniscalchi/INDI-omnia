@@ -1,6 +1,8 @@
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
+find_package(ZLIB REQUIRED)
+find_package (Threads REQUIRED)
 find_package(Qt5Network)
 
 set(INDI_SOVERSION "1")
@@ -17,19 +19,22 @@ include_directories(indi/libindi)
 include_directories(indi/libindi/libs)
 include_directories(indi/libindi/libs/indibase)
 add_library(indiclient
+    indi/libindi/libs/lilxml.h
     indi/libindi/libs/lilxml.c
+    indi/libindi/libs/indicom.h
+    indi/libindi/libs/indicom.c
+    indi/libindi/base64.h
     indi/libindi/base64.c
     indi/libindi/libs/indibase/basedevice.h
     indi/libindi/libs/indibase/basedevice.cpp
-    indi/libindi/libs/indibase/baseclient.h
-    indi/libindi/libs/indibase/baseclient.cpp
     indi/libindi/libs/indibase/baseclientqt.h
     indi/libindi/libs/indibase/baseclientqt.cpp
+    indi/libindi/libs/indibase/indiproperty.h
     indi/libindi/libs/indibase/indiproperty.cpp
+    indi/libindi/libs/indibase/indistandardproperty.h
     indi/libindi/libs/indibase/indistandardproperty.cpp
-    indi/libindi/libs/indicom.c
     )
 
-target_link_libraries(indiclient Qt5::Network)
+target_link_libraries(indiclient Qt5::Network ${CMAKE_THREAD_LIBS_INIT} ${ZLIB_LIBRARIES})
 target_include_directories(indiclient INTERFACE indi/libindi)
 target_include_directories(indiclient INTERFACE indi/libindi/libs)

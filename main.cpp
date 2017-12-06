@@ -1,8 +1,12 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
+#include "common/IndiClient.hpp"
+
 int main(int argc, char *argv[])
 {
+    //IndiClient indiClient;
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 
