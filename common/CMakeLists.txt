@@ -4,6 +4,10 @@ set(CMAKE_AUTOMOC ON)
 add_library(common
     IndiClient.hpp
     IndiClient.cpp
+    DeviceModel.hpp
+    DeviceModel.cpp
+    Device.hpp
+    Device.cpp
     )
 
 target_link_libraries(common indiclient)
