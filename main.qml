@@ -8,19 +8,22 @@ ApplicationWindow {
     height: 400
     title: qsTr("indi-omnia")
 
-    SwipeView {
-        id: swipeView
+    Page1 {
         anchors.fill: parent
-        currentIndex: tabBar.currentIndex
-
-        Page1 {
-        }
     }
 
-//    footer: TabBar {
-//        id: tabBar
-//        currentIndex: swipeView.currentIndex
-//        TabButton {
+//    SwipeView {
+//        id: swipeView
+//        anchors.fill: parent
+//        //currentIndex: tabBar.currentIndex
+
+
+//    }
+
+////    footer: TabBar {
+////        id: tabBar
+////        currentIndex: swipeView.currentIndex
+////        TabButton {
 //            text: qsTr("First")
 //        }
 //        TabButton {

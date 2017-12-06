@@ -27,7 +27,7 @@ Item {
 
         Button {
             id: connectButton
-            text: checked ? qsTr("Disconnect") : qsTr("Connect")
+            text: indiClient.connected ? qsTr("Disconnect") : qsTr("Connect")
             checked: indiClient.connected
             spacing: -3
             checkable: false
