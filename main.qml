@@ -5,29 +5,48 @@ import QtQuick.Layouts 1.3
 ApplicationWindow {
     visible: true
     width: 640
-    height: 400
+    height: 600
     title: qsTr("indi-omnia")
 
-    Page1 {
+    SwipeView {
+        id: swipeView
         anchors.fill: parent
+        currentIndex: tabBar.currentIndex
+
+        Item {
+            ConnectionBar {
+                id: connectionBar
+                height: 60
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right:parent.right
+            }
+
+            LogBox {
+                id: logBox
+                anchors.top: connectionBar.bottom
+                anchors.topMargin: 20
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+            }
+        }
+
+        Item {
+            DeviceList {
+                anchors.fill: parent
+            }
+        }
     }
 
-//    SwipeView {
-//        id: swipeView
-//        anchors.fill: parent
-//        //currentIndex: tabBar.currentIndex
-
-
-//    }
-
-////    footer: TabBar {
-////        id: tabBar
-////        currentIndex: swipeView.currentIndex
-////        TabButton {
-//            text: qsTr("First")
-//        }
-//        TabButton {
-//            text: qsTr("Second")
-//        }
-//    }
+    footer: TabBar {
+        id: tabBar
+        currentIndex: swipeView.currentIndex
+        TabButton {
+            text: qsTr("Connection/Log")
+        }
+        TabButton {
+            text: qsTr("Devices")
+        }
+    }
 }

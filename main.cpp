@@ -10,6 +10,8 @@ int main(int argc, char *argv[])
     IndiClient indiClient;
     DeviceModel deviceModel;
 
+    QObject::connect(&indiClient, &IndiClient::newDeviceReceived, &deviceModel, &DeviceModel::addDevice);
+
 //    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 

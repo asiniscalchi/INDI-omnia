@@ -1,11 +1,11 @@
 #ifndef INDICLIENT_HPP
 #define INDICLIENT_HPP
 
-#include <QObject>
+#include "indibase/baseclientqt.h"
 
 #include <QString>
 
-#include "indibase/baseclientqt.h"
+#include "Device.hpp"
 
 class IndiClient : public INDI::BaseClientQt
 {
@@ -35,6 +35,7 @@ public:
 signals:
     void message(const QString& msg);
     void connectedChanged(bool connected);
+    void newDeviceReceived(Device device);
 
 private:
     bool mConnected = false;
