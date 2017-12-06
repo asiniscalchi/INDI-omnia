@@ -13,12 +13,14 @@ Item {
 
         TextField {
             id: hostTextField
+            enabled: !indiClient.connected
             text: "localhost"
             placeholderText: qsTr("host")
         }
 
         TextField {
             id: portTextField
+            enabled: !indiClient.connected
             text: "7624"
             placeholderText: qsTr("port")
         }

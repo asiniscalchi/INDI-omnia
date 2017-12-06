@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     IndiClient indiClient;
 
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+//    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;

@@ -4,10 +4,8 @@ import QtQuick.Layouts 1.3
 
 ApplicationWindow {
     visible: true
-    width: 300
-    height: 200
-    font.family: "Helvetica"
-    font.pointSize: 20
+    width: 640
+    height: 400
     title: qsTr("indi-omnia")
 
     SwipeView {
