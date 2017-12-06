@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.0.1)
 
 project(indi-omnia LANGUAGES CXX)
 
+enable_testing()
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
