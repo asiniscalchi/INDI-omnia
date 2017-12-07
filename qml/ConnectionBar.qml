@@ -16,7 +16,7 @@
 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-import QtQuick 2.7
+import QtQuick 2.5
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 
