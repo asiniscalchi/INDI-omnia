@@ -6,7 +6,6 @@ ApplicationWindow {
     visible: true
     width: 640
     height: 600
-    title: qsTr("indi-omnia")
 
     SwipeView {
         id: swipeView

@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.0.1)
 
 project(indi-omnia LANGUAGES CXX C)
+set(VERSION_MAJOR 0)
+set(VERSION_MINOR 1)
+set(VERSION_RELEASE 0)
+configure_file (Version.h.in Version.h)
 
 enable_testing()
 

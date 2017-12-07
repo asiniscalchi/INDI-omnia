@@ -2,18 +2,21 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
+#include "Version.h"
 #include "common/IndiClient.hpp"
 #include "common/DeviceModel.hpp"
 
 int main(int argc, char *argv[])
 {
-    IndiClient indiClient;
-    DeviceModel deviceModel;
-
-    QObject::connect(&indiClient, &IndiClient::newDeviceReceived, &deviceModel, &DeviceModel::addDevice);
-
 //    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
+    QGuiApplication::setApplicationName("Indi-Omnia");
+    QGuiApplication::setApplicationVersion(QString(VERSION_MAJOR) + "." + QString(VERSION_MINOR) + "." + QString(VERSION_RELEASE));
+    QGuiApplication::setApplicationDisplayName(QGuiApplication::applicationName() + " " + QGuiApplication::applicationVersion());
+
+    IndiClient indiClient;
+    DeviceModel deviceModel;
+    QObject::connect(&indiClient, &IndiClient::newDeviceReceived, &deviceModel, &DeviceModel::addDevice);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("indiClient", &indiClient);
