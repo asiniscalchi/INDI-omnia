@@ -35,7 +35,7 @@ Rectangle {
         TableViewColumn {
             role: "connected"
             title: "Connected"
-            width: parent.width - 200 - 150
+            width: 150
         }
         model: deviceModel
     }
