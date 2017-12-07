@@ -29,7 +29,6 @@ ApplicationWindow {
     SwipeView {
         id: swipeView
         anchors.fill: parent
-        currentIndex: tabBar.currentIndex
 
         Item {
             ConnectionBar {
@@ -58,6 +57,7 @@ ApplicationWindow {
     }
 
     PageIndicator {
+        id: pageIndicator
         x: 303
         y: 580
         anchors.horizontalCenter: parent.horizontalCenter

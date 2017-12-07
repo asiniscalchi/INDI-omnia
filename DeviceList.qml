@@ -34,6 +34,7 @@ Rectangle {
         model: deviceModel
         delegate: deviceDelegate
         highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+        highlightFollowsCurrentItem: true
         focus: true
     }
 }
