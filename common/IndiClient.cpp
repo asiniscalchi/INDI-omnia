@@ -93,4 +93,5 @@ void IndiClient::serverDisconnected(int exit_code)
     emit message("(INDI) server disconnected (code=" + QString::number(exit_code) + ")");
     mConnected = false;
     emit connectedChanged(mConnected);
+    emit serverDisconnectedReceived(exit_code);
 }

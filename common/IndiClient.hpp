@@ -36,6 +36,7 @@ signals:
     void message(const QString& msg);
     void connectedChanged(bool connected);
     void newDeviceReceived(Device device);
+    void serverDisconnectedReceived(int exit_code);
 
 private:
     bool mConnected = false;

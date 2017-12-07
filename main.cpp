@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
     IndiClient indiClient;
     DeviceModel deviceModel;
     QObject::connect(&indiClient, &IndiClient::newDeviceReceived, &deviceModel, &DeviceModel::addDevice);
+    QObject::connect(&indiClient, &IndiClient::serverDisconnectedReceived, &deviceModel, &DeviceModel::clear);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("indiClient", &indiClient);
