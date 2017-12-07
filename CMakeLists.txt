@@ -20,3 +20,5 @@ target_link_libraries(${PROJECT_NAME}
     Qt5::Quick
     common
     )
+
+add_subdirectory(installer)
