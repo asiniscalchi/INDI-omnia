@@ -3,6 +3,7 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 
 ApplicationWindow {
+    id: applicationWindow
     visible: true
     width: 640
     height: 600
@@ -38,14 +39,13 @@ ApplicationWindow {
         }
     }
 
-    footer: TabBar {
-        id: tabBar
+    PageIndicator {
+        x: 303
+        y: 580
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
         currentIndex: swipeView.currentIndex
-        TabButton {
-            text: qsTr("Connection")
-        }
-        TabButton {
-            text: qsTr("Devices")
-        }
+        count: swipeView.count
     }
 }

@@ -4,14 +4,13 @@ Rectangle {
     Component {
         id: deviceDelegate
         Item {
-            width: 300; height: 60
+            width: 300; height: 20
             Column {
                 Text { text: '<b>Name:</b> ' + name }
-                Text { text: '<b>Connected:</b> ' + connected }
-                Text { text: '<b>Interface:</b> ' + deviceInterface }
             }
         }
     }
+
     ListView {
         anchors.fill: parent
         model: deviceModel
