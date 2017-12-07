@@ -17,24 +17,26 @@
 */
 
 import QtQuick 2.0
+import QtQuick.Controls 1.4
 
 Rectangle {
-    Component {
-        id: deviceDelegate
-        Item {
-            width: 300; height: 20
-            Column {
-                Text { text: '<b>Name:</b> ' + name }
-            }
-        }
-    }
-
-    ListView {
+    TableView {
         anchors.fill: parent
+        TableViewColumn {
+            role: "name"
+            title: "Name"
+            width: 150
+        }
+        TableViewColumn {
+            role: "deviceInterface"
+            title: "Interface"
+            width: 200
+        }
+        TableViewColumn {
+            role: "connected"
+            title: "Connected"
+            width: parent.width - 200 - 150
+        }
         model: deviceModel
-        delegate: deviceDelegate
-        highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
-        highlightFollowsCurrentItem: true
-        focus: true
     }
 }
