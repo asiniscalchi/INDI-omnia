@@ -29,6 +29,7 @@ ApplicationWindow {
     SwipeView {
         id: swipeView
         anchors.fill: parent
+        interactive: false
 
         Item {
             ConnectionBar {
@@ -65,5 +66,35 @@ ApplicationWindow {
         anchors.bottomMargin: 0
         currentIndex: swipeView.currentIndex
         count: swipeView.count
+    }
+
+    Image {
+        visible: swipeView.currentIndex != 0
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 5
+        sourceSize.width: 30
+        sourceSize.height: 30
+        source: "qrc:/left_arrow.svg"
+        fillMode: Image.PreserveAspectFit
+        MouseArea {
+            anchors.fill: parent
+            onClicked: swipeView.decrementCurrentIndex()
+        }
+    }
+
+    Image {
+        visible: swipeView.currentIndex != swipeView.count - 1
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 5
+        sourceSize.width: 30
+        sourceSize.height: 30
+        source: "qrc:/right_arrow.svg"
+        fillMode: Image.PreserveAspectFit
+        MouseArea {
+            anchors.fill: parent
+            onClicked: swipeView.incrementCurrentIndex()
+        }
     }
 }

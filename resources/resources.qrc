@@ -1,2 +1,6 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/">
+        <file>left_arrow.svg</file>
+        <file>right_arrow.svg</file>
+    </qresource>
+</RCC>
