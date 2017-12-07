@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
 {
 //    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
+    QGuiApplication::setOrganizationName("Lysergic");
     QGuiApplication::setApplicationName("Indi-Omnia");
     QGuiApplication::setApplicationVersion(QString(VERSION_MAJOR) + "." + QString(VERSION_MINOR) + "." + QString(VERSION_RELEASE));
     QGuiApplication::setApplicationDisplayName(QGuiApplication::applicationName() + " " + QGuiApplication::applicationVersion());

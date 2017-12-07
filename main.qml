@@ -42,7 +42,7 @@ ApplicationWindow {
         id: tabBar
         currentIndex: swipeView.currentIndex
         TabButton {
-            text: qsTr("Connection/Log")
+            text: qsTr("Connection")
         }
         TabButton {
             text: qsTr("Devices")
