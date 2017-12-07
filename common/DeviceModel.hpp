@@ -13,7 +13,8 @@ class DeviceModel : public QAbstractListModel
 public:
     enum DeviceRoles {
         TypeRole = Qt::UserRole + 1,
-        SizeRole
+        ConnectedRole,
+        DeviceInterfaceRole
     };
 
     DeviceModel(QObject *parent = 0);

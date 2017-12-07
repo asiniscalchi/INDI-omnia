@@ -1,10 +1,22 @@
 import QtQuick 2.0
 
-ListView {
-    width: 180; height: 200
-
-    model: deviceModel
-    delegate: Text {
-        text: name
+Rectangle {
+    Component {
+        id: deviceDelegate
+        Item {
+            width: 300; height: 60
+            Column {
+                Text { text: '<b>Name:</b> ' + name }
+                Text { text: '<b>Connected:</b> ' + connected }
+                Text { text: '<b>Interface:</b> ' + deviceInterface }
+            }
+        }
+    }
+    ListView {
+        anchors.fill: parent
+        model: deviceModel
+        delegate: deviceDelegate
+        highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+        focus: true
     }
 }

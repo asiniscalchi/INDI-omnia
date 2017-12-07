@@ -3,15 +3,15 @@
 
 #include <QString>
 
-class Device
+#include "indibase/basedevice.h"
+
+struct Device
 {
-public:
-    Device(const QString &type);
+    QString name;
+    bool connected = false;
+    QString deviceInterface;
 
-    QString name() const;
-
-private:
-    QString mName;
+    static Device fromBaseDevice(const INDI::BaseDevice &baseDevice);
 };
 
 

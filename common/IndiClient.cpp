@@ -33,7 +33,7 @@ void IndiClient::disconnect()
 void IndiClient::newDevice(INDI::BaseDevice *dp)
 {
     emit message("(INDI) newDevice: " + QString(dp->getDeviceName()));
-    emit newDeviceReceived(Device(dp->getDeviceName()));
+    emit newDeviceReceived(Device::fromBaseDevice(*dp));
 }
 
 void IndiClient::removeDevice(INDI::BaseDevice *dp)

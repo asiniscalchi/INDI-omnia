@@ -1,11 +1,10 @@
 #include "Device.hpp"
 
-Device::Device(const QString &name)
-    : mName(name)
+Device Device::fromBaseDevice(const INDI::BaseDevice &baseDevice)
 {
-}
-
-QString Device::name() const
-{
-    return mName;
+    Device device;
+    device.name = QString(baseDevice.getDeviceName());
+    device.connected = baseDevice.isConnected();
+    device.deviceInterface = QString::number(baseDevice.getDriverInterface());
+    return device;
 }
