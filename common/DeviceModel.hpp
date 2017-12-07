@@ -20,6 +20,8 @@ public:
     DeviceModel(QObject *parent = 0);
 
     void addDevice(const Device &device);
+    void clear();
+
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 

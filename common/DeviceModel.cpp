@@ -12,6 +12,13 @@ void DeviceModel::addDevice(const Device &device)
     endInsertRows();
 }
 
+void DeviceModel::clear()
+{
+    beginResetModel();
+    mDevices.clear();
+    endResetModel();
+}
+
 int DeviceModel::rowCount(const QModelIndex & parent) const {
     Q_UNUSED(parent);
     return mDevices.count();
