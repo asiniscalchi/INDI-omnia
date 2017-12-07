@@ -1,3 +1,0 @@
-[submodule "external/indi"]
-	path = external/indi
-	url = https://github.com/asiniscalchi/indi.git
