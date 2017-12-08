@@ -69,12 +69,14 @@ ApplicationWindow {
     }
 
     Image {
+        width: 30
+        height: width
         visible: swipeView.currentIndex != 0
-        anchors.left: parent.left
+        anchors.right: pageIndicator.left
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 5
-        sourceSize.width: 30
-        sourceSize.height: 30
+        sourceSize.width: width
+        sourceSize.height: height
         source: "qrc:/left_arrow.svg"
         fillMode: Image.PreserveAspectFit
         MouseArea {
@@ -84,12 +86,15 @@ ApplicationWindow {
     }
 
     Image {
+        width: 30
+        height: width
+        anchors.rightMargin: 0
         visible: swipeView.currentIndex != swipeView.count - 1
-        anchors.right: parent.right
+        anchors.left: pageIndicator.right
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 5
-        sourceSize.width: 30
-        sourceSize.height: 30
+        sourceSize.width: width
+        sourceSize.height: height
         source: "qrc:/right_arrow.svg"
         fillMode: Image.PreserveAspectFit
         MouseArea {
