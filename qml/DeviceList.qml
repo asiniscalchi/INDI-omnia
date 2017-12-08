@@ -26,16 +26,18 @@ Rectangle {
             role: "name"
             title: "Name"
             width: 150
+            movable: false
         }
         TableViewColumn {
             role: "deviceInterface"
             title: "Interface"
             width: 200
+            movable: false
         }
         TableViewColumn {
             role: "connected"
             title: "Connected"
-            width: 150
+            movable: false
         }
         model: deviceModel
     }
