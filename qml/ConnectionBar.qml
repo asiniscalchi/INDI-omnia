@@ -46,7 +46,6 @@ Item {
             id: connectButton
             text: indiClient.connected ? qsTr("Disconnect") : qsTr("Connect")
             checked: indiClient.connected
-            spacing: -3
             checkable: false
             onClicked: indiClient.connected ? indiClient.disconnect() : indiClient.connect(hostTextField.text, portTextField.text)
         }
