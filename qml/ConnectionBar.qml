@@ -19,6 +19,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
+import Qt.labs.settings 1.0
 
 Item {
     RowLayout {
@@ -49,5 +50,10 @@ Item {
             checkable: false
             onClicked: indiClient.connected ? indiClient.disconnect() : indiClient.connect(hostTextField.text, portTextField.text)
         }
+    }
+
+    Settings {
+            property alias host: hostTextField.text
+            property alias port: portTextField.text
     }
 }
