@@ -4,11 +4,11 @@ compiler:
   - gcc
 
 before_install:
-  - sudo add-apt-repository --yes ppa:beineri/opt-qt594-trusty
+  - sudo add-apt-repository --yes ppa:beineri/opt-qt593-trusty
   - sudo apt-get -qq update
   - sudo apt-get -qq install gcc
   - sudo apt-get -qq install g++
-  - sudo apt-get -qq install qt59
+  - sudo apt-get -qq install qt59-meta-full
 
 install:
 
