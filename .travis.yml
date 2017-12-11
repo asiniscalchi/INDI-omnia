@@ -1,0 +1,21 @@
+language: cpp
+
+compiler:
+  - gcc
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get -qq install gcc
+  - sudo apt-get -qq install g++
+
+install:
+
+before_script:
+  - mkdir build
+  - cd build
+
+script:
+  - cmake ..
+  - make -j 2
+  - ctest --output-on-failure
+
