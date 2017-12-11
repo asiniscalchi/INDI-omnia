@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get -qq update
   - sudo apt-get -qq install gcc
   - sudo apt-get -qq install g++
-  - sudo apt-get -qq install qt59-meta-full
+  - sudo apt-get -qq install qt59quickcontrols2
 
 install:
 
