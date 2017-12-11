@@ -34,6 +34,8 @@ Item {
                 verticalAlignment: Text.AlignTop
                 readOnly: true
                 color: "green"
+                selectByKeyboard: true
+                selectByMouse: true
 
                 Connections {
                     target: indiClient
