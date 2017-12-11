@@ -22,23 +22,21 @@ import QtQuick.Controls 1.4
 Rectangle {
     TableView {
         anchors.fill: parent
+        model: deviceModel
+
+        TableViewColumn {
+            id: booo
+            role: "connected"
+            title: "Connected"
+            movable: false
+            delegate:  Switch {
+            }
+        }
         TableViewColumn {
             role: "name"
             title: "Name"
             width: 150
             movable: false
         }
-        TableViewColumn {
-            role: "deviceInterface"
-            title: "Interface"
-            width: 200
-            movable: false
-        }
-        TableViewColumn {
-            role: "connected"
-            title: "Connected"
-            movable: false
-        }
-        model: deviceModel
     }
 }
