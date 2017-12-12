@@ -54,6 +54,7 @@ signals:
     void connectedChanged(bool connected);
     void newDeviceReceived(Device device);
     void serverDisconnectedReceived(int exit_code);
+    void deviceConnectedChanged(QString name, bool connected);
 
 private:
     bool mConnected = false;

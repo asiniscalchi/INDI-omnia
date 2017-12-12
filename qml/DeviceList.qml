@@ -28,14 +28,23 @@ Rectangle {
     Component {
         id: viewDelegate
         Row {
+            Text { text: index }
             anchors.left: parent.left
             anchors.right: parent.right
             spacing: 10
             Switch { checked: connected
-                onClicked: deviceModel.setData(index, !connected)
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: deviceModel.setData(deviceModel.index(index, 0), !connected)
+                    Text { text: index }
+                }
+
+
             }
             Text { text: name }
         }
+
     }
 
     ListView {

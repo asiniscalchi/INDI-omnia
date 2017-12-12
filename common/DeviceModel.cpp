@@ -13,6 +13,7 @@ DeviceModel::DeviceModel(QObject *parent)
     QObject::connect(&mConnection, &IndiClient::connectedChanged, this, &DeviceModel::connectedChanged);
     QObject::connect(&mConnection, &IndiClient::newDeviceReceived, this, &DeviceModel::addDevice);
     QObject::connect(&mConnection, &IndiClient::serverDisconnectedReceived, this, &DeviceModel::clear);
+    QObject::connect(&mConnection, &IndiClient::deviceConnectedChanged, this, &DeviceModel::onDeviceConnectedChanged);
 }
 
 bool DeviceModel::connect(const QString &host, int port)
@@ -34,6 +35,24 @@ void DeviceModel::addDevice(const Device &device)
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     mDevices << device;
     endInsertRows();
+}
+
+void DeviceModel::onDeviceConnectedChanged(QString name, bool connected)
+{
+    qDebug() << name << " is connected " << connected;
+
+    for (int i=0 ; i < mDevices.size() ; ++i)
+    {
+        Device& device = mDevices[i];
+        if (device.name == name)
+        {
+            device.connected = connected;
+            QModelIndex idx = index(i, 0);
+            emit dataChanged(idx, idx);
+
+        }
+
+    }
 }
 
 void DeviceModel::clear()
@@ -85,7 +104,17 @@ bool DeviceModel::setData(const QModelIndex &index, const QVariant &value, int r
 
     int row = index.row();
 
-    if (role == ConnectedRole)
+    QString name = mDevices.at(row).name;
+
+   // if (role == ConnectedRole)
+    {
+        if (value.toBool())
+            mConnection.connectDevice(name.toStdString().c_str());
+        else
+            mConnection.disconnectDevice(name.toStdString().c_str());
+    }
+
+    emit dataChanged(index, index);
 
     return true;
 }

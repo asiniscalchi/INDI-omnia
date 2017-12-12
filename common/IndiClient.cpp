@@ -1,6 +1,7 @@
 #include "IndiClient.hpp"
 
 #include "indibase/basedevice.h"
+#include "indibase/indistandardproperty.h"
 
 IndiClient::IndiClient(QObject *parent) : INDI::BaseClientQt(parent)
 {
@@ -44,11 +45,20 @@ void IndiClient::removeDevice(INDI::BaseDevice *dp)
 void IndiClient::newProperty(INDI::Property *property)
 {
     emit message("(INDI) newProperty (" + QString(property->getDeviceName()) + "): " + QString(property->getName()));
+
+    QString deviceName(property->getDeviceName());
+    QString propertyConnection(INDI::SP::CONNECTION);
+    QString propertyName(property->getName());
+
+    if (propertyName == propertyConnection)
+        emit deviceConnectedChanged(deviceName, property->getBaseDevice()->isConnected());
 }
 
 void IndiClient::removeProperty(INDI::Property *property)
 {
     emit message("(INDI) removeProperty");
+
+
 }
 
 void IndiClient::newBLOB(IBLOB *bp)
@@ -59,6 +69,16 @@ void IndiClient::newBLOB(IBLOB *bp)
 void IndiClient::newSwitch(ISwitchVectorProperty *svp)
 {
     emit message("(INDI) newSwitch (" + QString(svp->device) + "): " + QString(svp->name));
+
+    QString deviceName(svp->device);
+    QString propertyConnection(INDI::SP::CONNECTION);
+    QString propertyName(svp->name);
+
+    if (propertyName == propertyConnection)
+    {
+        bool isConnected = (svp->sp->s == ISS_ON);
+        emit deviceConnectedChanged(deviceName, isConnected);
+    }
 }
 
 void IndiClient::newNumber(INumberVectorProperty *nvp)

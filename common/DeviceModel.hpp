@@ -58,6 +58,7 @@ protected:
 
 private slots:
     void addDevice(const Device &device);
+    void onDeviceConnectedChanged(QString name, bool connected);
     void clear();
 
 private:
