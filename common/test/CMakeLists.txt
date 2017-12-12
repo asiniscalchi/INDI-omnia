@@ -9,6 +9,6 @@ target_link_libraries(${TEST_NAME} Qt5::Test common indiclient)
 add_test(${TEST_NAME} ${TEST_NAME})
 
 set(TEST_NAME TestDeviceModel)
-add_executable(${TEST_NAME} ${TEST_NAME}.cpp ${TEST_NAME}.hpp)
+add_executable(${TEST_NAME} ${TEST_NAME}.cpp ${TEST_NAME}.hpp modeltest.h modeltest.cpp)
 target_link_libraries(${TEST_NAME} Qt5::Test common indiclient)
 add_test(${TEST_NAME} ${TEST_NAME})

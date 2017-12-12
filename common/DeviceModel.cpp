@@ -3,13 +3,9 @@
 #include <QDebug>
 #include <QQmlEngine>
 
-#include "modeltest.h"
-
 DeviceModel::DeviceModel(QObject *parent)
     : QAbstractListModel(parent)
 {
-    new ModelTest(this, this);
-
     qmlRegisterType<DeviceModel>("DeviceRoles", 1, 0, "DeviceRoles");
 
     QObject::connect(&mConnection, &IndiClient::message, this, &DeviceModel::log);
