@@ -30,24 +30,24 @@ Item {
 
         TextField {
             id: hostTextField
-            enabled: !indiClient.connected
+            enabled: !deviceModel.connected
             text: "localhost"
             placeholderText: qsTr("host")
         }
 
         TextField {
             id: portTextField
-            enabled: !indiClient.connected
+            enabled: !deviceModel.connected
             text: "7624"
             placeholderText: qsTr("port")
         }
 
         Button {
             id: connectButton
-            text: indiClient.connected ? qsTr("Disconnect") : qsTr("Connect")
-            checked: indiClient.connected
+            text: deviceModel.connected ? qsTr("Disconnect") : qsTr("Connect")
+            checked: deviceModel.connected
             checkable: false
-            onClicked: indiClient.connected ? indiClient.disconnect() : indiClient.connect(hostTextField.text, portTextField.text)
+            onClicked: deviceModel.connected ? deviceModel.disconnect() : deviceModel.connect(hostTextField.text, portTextField.text)
         }
     }
 

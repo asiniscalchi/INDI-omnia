@@ -24,10 +24,13 @@
 #include <QStringList>
 
 #include "Device.hpp"
+#include "IndiClient.hpp"
 
 class DeviceModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(bool connected READ isConnected NOTIFY connectedChanged)
+
 public:
     enum DeviceRoles {
         TypeRole = Qt::UserRole + 1,
@@ -37,17 +40,27 @@ public:
 
     DeviceModel(QObject *parent = 0);
 
+    Q_INVOKABLE bool connect(const QString& host, int port);
+    Q_INVOKABLE void disconnect();
+    bool isConnected() const;
+
     void addDevice(const Device &device);
     void clear();
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
+
+signals:
+    void log(QString msg);
+    void connectedChanged(bool connected);
+
 protected:
     QHash<int, QByteArray> roleNames() const;
 
 private:
     QList<Device> mDevices;
+    IndiClient mConnection;
 };
 
 #endif // DEVICEMODEL_HPP

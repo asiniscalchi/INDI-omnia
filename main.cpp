@@ -42,7 +42,6 @@ int main(int argc, char *argv[])
     QObject::connect(&indiClient, &IndiClient::serverDisconnectedReceived, &deviceModel, &DeviceModel::clear);
 
     QQmlApplicationEngine engine;
-    engine.rootContext()->setContextProperty("indiClient", &indiClient);
     engine.rootContext()->setContextProperty("deviceModel", &deviceModel);
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())

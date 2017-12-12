@@ -38,8 +38,8 @@ Item {
                 selectByMouse: true
 
                 Connections {
-                    target: indiClient
-                    onMessage: logTextArea.append(msg)
+                    target: deviceModel
+                    onLog: logTextArea.append(msg)
                 }
             }
         }

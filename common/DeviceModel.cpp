@@ -3,6 +3,22 @@
 DeviceModel::DeviceModel(QObject *parent)
     : QAbstractListModel(parent)
 {
+    QObject::connect(&mConnection, &IndiClient::message, this, &DeviceModel::log);
+    QObject::connect(&mConnection, &IndiClient::connectedChanged, this, &DeviceModel::connectedChanged);
+}
+
+bool DeviceModel::connect(const QString &host, int port)
+{
+    return mConnection.connect(host, port);
+}
+void DeviceModel::disconnect()
+{
+    mConnection.disconnectServer();
+}
+
+bool DeviceModel::isConnected() const
+{
+    return mConnection.isConnected();
 }
 
 void DeviceModel::addDevice(const Device &device)
