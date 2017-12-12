@@ -97,7 +97,7 @@ QHash<int, QByteArray> DeviceModel::roleNames() const {
 
 bool DeviceModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    qDebug() << "DeviceModel::setData value = " << value << ", role = " << roleNames()[role];
+    qDebug() << "DeviceModel::setData value = " << value << ", role = " << role;
 
     if (!index.isValid())
         return false;
