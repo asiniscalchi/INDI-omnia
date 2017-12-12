@@ -28,14 +28,13 @@
 class IndiClient : public INDI::BaseClientQt
 {
     Q_OBJECT
-    Q_PROPERTY(bool connected READ isConnected NOTIFY connectedChanged)
 
 public:
     explicit IndiClient(QObject *parent = nullptr);
 
-    Q_INVOKABLE bool connect(const QString& host, int port);
+    bool connect(const QString& host, int port);
     bool isConnected() const;
-    Q_INVOKABLE void disconnect();
+    void disconnect();
 
     void newDevice(INDI::BaseDevice *dp) final;
     void removeDevice(INDI::BaseDevice *dp) final;
