@@ -78,6 +78,25 @@ QHash<int, QByteArray> DeviceModel::roleNames() const {
 
 bool DeviceModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    qDebug() << "DeviceModel::setData role = " << roleNames()[role];
-    return false;
+    qDebug() << "DeviceModel::setData value = " << value << ", role = " << roleNames()[role];
+
+    if (!index.isValid())
+        return false;
+
+    int row = index.row();
+
+    if (role == ConnectedRole)
+
+    return true;
+}
+
+
+Qt::ItemFlags DeviceModel::flags(const QModelIndex &index) const
+{
+    auto flags = QAbstractListModel::flags(index);
+
+    if (index.isValid())
+        flags |= Qt::ItemIsEditable;
+
+    return flags;
 }

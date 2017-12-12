@@ -8,5 +8,4 @@ void TestDeviceModel::countDevicesOnEmplyModel()
     QVERIFY(model.rowCount() == 0);
 }
 
-
 QTEST_MAIN(TestDeviceModel)

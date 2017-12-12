@@ -20,14 +20,20 @@ import QtQuick 2.0
 import QtQuick.Controls 1.4
 
 Rectangle {
+    anchors.leftMargin: 5
+    anchors.rightMargin: 5
+    anchors.topMargin: 5
+    anchors.bottomMargin: 5
+
     Component {
         id: viewDelegate
         Row {
             anchors.left: parent.left
-            anchors.leftMargin: 10
             anchors.right: parent.right
             spacing: 10
-            Switch { checked: connected }
+            Switch { checked: connected
+                onClicked: deviceModel.setData(index, !connected)
+            }
             Text { text: name }
         }
     }
