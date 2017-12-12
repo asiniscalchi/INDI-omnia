@@ -23,7 +23,6 @@
 #include "Version.h"
 #include "common/IndiClient.hpp"
 #include "common/DeviceModel.hpp"
-#include "common/modeltest.h"
 
 int main(int argc, char *argv[])
 {
@@ -38,7 +37,6 @@ int main(int argc, char *argv[])
     QGuiApplication::setApplicationDisplayName(QGuiApplication::applicationName() + " " + QGuiApplication::applicationVersion());
 
     DeviceModel deviceModel;
-    new ModelTest(&deviceModel, &deviceModel);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("deviceModel", &deviceModel);
