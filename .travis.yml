@@ -21,7 +21,7 @@ before_script:
 script:
   - cmake .. -DCMAKE_BUILD_TYPE=Release -G "Ninja"
   - ninja
-  - ninja install
+#  - ninja install
   - ctest --output-on-failure
   - cpack
 
