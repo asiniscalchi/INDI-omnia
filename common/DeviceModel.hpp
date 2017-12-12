@@ -44,6 +44,7 @@ public:
     Q_INVOKABLE bool connect(const QString& host, int port);
     Q_INVOKABLE void disconnect();
     bool isConnected() const;
+    Q_INVOKABLE bool setDeviceConnected(int row, bool connected);
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;

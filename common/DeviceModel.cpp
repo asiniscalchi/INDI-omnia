@@ -29,6 +29,14 @@ bool DeviceModel::isConnected() const
     return mConnection.isConnected();
 }
 
+bool DeviceModel::setDeviceConnected(int row, bool connected)
+{
+    QModelIndex modelIndex = index(row, 0);
+    return setData(modelIndex, connected, ConnectedRole);
+}
+
+
+
 void DeviceModel::addDevice(const Device &device)
 {
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
