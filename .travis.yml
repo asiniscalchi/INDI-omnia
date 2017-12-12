@@ -13,6 +13,7 @@ before_install:
 install:
 
 before_script:
+  - source /opt/qt59/bin/qt59-env.sh
   - mkdir build
   - cd build
 
