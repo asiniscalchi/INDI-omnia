@@ -1,5 +1,7 @@
 #include "DeviceModel.hpp"
 
+#include <QDebug>
+
 #include "modeltest.h"
 
 DeviceModel::DeviceModel(QObject *parent)
@@ -71,4 +73,11 @@ QHash<int, QByteArray> DeviceModel::roleNames() const {
     roles[ConnectedRole] = "connected";
     roles[DeviceInterfaceRole] = "deviceInterface";
     return roles;
+}
+
+
+bool DeviceModel::setData(const QModelIndex &index, const QVariant &value, int role)
+{
+    qDebug() << "DeviceModel::setData role = " << roleNames()[role];
+    return false;
 }
