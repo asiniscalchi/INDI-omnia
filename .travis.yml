@@ -9,6 +9,7 @@ before_install:
   - sudo apt-get -qq install gcc
   - sudo apt-get -qq install g++
   - sudo apt-get -qq install qt59quickcontrols2
+  - sudo apt-get -qq install ninja-build
 
 install:
 
@@ -18,7 +19,13 @@ before_script:
   - cd build
 
 script:
-  - cmake ..
-  - make -j 2
+  - cmake .. -DCMAKE_BUILD_TYPE=Release -G "Ninja"
+  - ninja
+  - ninja install
   - ctest --output-on-failure
+  - cpack
+
+notifications:
+  email:
+    - asiniscalchi@gmail.com
 
