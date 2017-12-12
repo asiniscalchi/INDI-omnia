@@ -20,23 +20,21 @@ import QtQuick 2.0
 import QtQuick.Controls 1.4
 
 Rectangle {
-    TableView {
+    Component {
+        id: viewDelegate
+        Row {
+            anchors.left: parent.left
+            anchors.leftMargin: 10
+            anchors.right: parent.right
+            spacing: 10
+            Switch { checked: connected }
+            Text { text: name }
+        }
+    }
+
+    ListView {
         anchors.fill: parent
         model: deviceModel
-
-        TableViewColumn {
-            id: booo
-            role: "connected"
-            title: "Connected"
-            movable: false
-            delegate:  Switch {
-            }
-        }
-        TableViewColumn {
-            role: "name"
-            title: "Name"
-            width: 150
-            movable: false
-        }
+        delegate: viewDelegate
     }
 }
