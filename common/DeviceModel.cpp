@@ -5,6 +5,9 @@ DeviceModel::DeviceModel(QObject *parent)
 {
     QObject::connect(&mConnection, &IndiClient::message, this, &DeviceModel::log);
     QObject::connect(&mConnection, &IndiClient::connectedChanged, this, &DeviceModel::connectedChanged);
+    QObject::connect(&mConnection, &IndiClient::newDeviceReceived, this, &DeviceModel::addDevice);
+    QObject::connect(&mConnection, &IndiClient::serverDisconnectedReceived, this, &DeviceModel::clear);
+
 }
 
 bool DeviceModel::connect(const QString &host, int port)

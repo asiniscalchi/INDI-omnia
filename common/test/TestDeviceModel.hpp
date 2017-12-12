@@ -9,8 +9,6 @@ class TestDeviceModel : public QObject
 
 private slots:
     void countDevicesOnEmplyModel();
-    void countDevicesAfterAddDevice();
-    void clearModel();
 };
 
 #endif // TESTDEVICEMODEL_HPP

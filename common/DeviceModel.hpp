@@ -44,9 +44,6 @@ public:
     Q_INVOKABLE void disconnect();
     bool isConnected() const;
 
-    void addDevice(const Device &device);
-    void clear();
-
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
@@ -57,6 +54,10 @@ signals:
 
 protected:
     QHash<int, QByteArray> roleNames() const;
+
+private slots:
+    void addDevice(const Device &device);
+    void clear();
 
 private:
     QList<Device> mDevices;

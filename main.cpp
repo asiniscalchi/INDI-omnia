@@ -36,10 +36,7 @@ int main(int argc, char *argv[])
     QGuiApplication::setApplicationVersion(QString(VERSION_MAJOR) + "." + QString(VERSION_MINOR) + "." + QString(VERSION_RELEASE));
     QGuiApplication::setApplicationDisplayName(QGuiApplication::applicationName() + " " + QGuiApplication::applicationVersion());
 
-    IndiClient indiClient;
     DeviceModel deviceModel;
-    QObject::connect(&indiClient, &IndiClient::newDeviceReceived, &deviceModel, &DeviceModel::addDevice);
-    QObject::connect(&indiClient, &IndiClient::serverDisconnectedReceived, &deviceModel, &DeviceModel::clear);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("deviceModel", &deviceModel);
