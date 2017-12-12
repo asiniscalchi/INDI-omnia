@@ -1,6 +1,7 @@
 #include "DeviceModel.hpp"
 
 #include <QDebug>
+#include <QQmlEngine>
 
 #include "modeltest.h"
 
@@ -8,6 +9,8 @@ DeviceModel::DeviceModel(QObject *parent)
     : QAbstractListModel(parent)
 {
     new ModelTest(this, this);
+
+    qmlRegisterType<DeviceModel>("DeviceRoles", 1, 0, "DeviceRoles");
 
     QObject::connect(&mConnection, &IndiClient::message, this, &DeviceModel::log);
     QObject::connect(&mConnection, &IndiClient::connectedChanged, this, &DeviceModel::connectedChanged);
@@ -49,9 +52,7 @@ void DeviceModel::onDeviceConnectedChanged(QString name, bool connected)
             device.connected = connected;
             QModelIndex idx = index(i, 0);
             emit dataChanged(idx, idx);
-
         }
-
     }
 }
 
@@ -106,15 +107,13 @@ bool DeviceModel::setData(const QModelIndex &index, const QVariant &value, int r
 
     QString name = mDevices.at(row).name;
 
-   // if (role == ConnectedRole)
+    if (role == ConnectedRole)
     {
         if (value.toBool())
             mConnection.connectDevice(name.toStdString().c_str());
         else
             mConnection.disconnectDevice(name.toStdString().c_str());
     }
-
-    emit dataChanged(index, index);
 
     return true;
 }

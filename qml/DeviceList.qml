@@ -18,6 +18,7 @@
 
 import QtQuick 2.0
 import QtQuick.Controls 1.4
+import DeviceRoles 1.0
 
 Rectangle {
     anchors.leftMargin: 5
@@ -35,7 +36,7 @@ Rectangle {
                 checked: connected
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: deviceModel.setData(deviceModel.index(index, 0), !connected)
+                    onClicked: deviceModel.setData(deviceModel.index(index, 0), !connected, DeviceRoles.ConnectedRole)
                 }
             }
             Text { text: name }

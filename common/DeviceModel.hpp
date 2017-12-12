@@ -37,6 +37,7 @@ public:
         ConnectedRole,
         DeviceInterfaceRole
     };
+    Q_ENUMS(DeviceRoles)
 
     DeviceModel(QObject *parent = 0);
 
