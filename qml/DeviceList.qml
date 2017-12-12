@@ -35,7 +35,7 @@ Rectangle {
                 checked: connected
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: deviceModel.setDeviceConnected(index, !connected)
+                    onClicked: deviceModelFacade.setDeviceConnected(index, !connected)
                 }
             }
             Text { text: name }

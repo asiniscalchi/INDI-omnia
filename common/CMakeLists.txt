@@ -10,6 +10,8 @@ add_library(common
     DeviceModel.cpp
     Device.hpp
     Device.cpp
+    DeviceModelFacade.hpp
+    DeviceModelFacade.cpp
     )
 
 target_link_libraries(common Qt5::Qml indiclient)
