@@ -20,31 +20,32 @@ import QtQuick 2.0
 import QtQuick.Controls 1.4
 
 Rectangle {
-    anchors.leftMargin: 5
-    anchors.rightMargin: 5
-    anchors.topMargin: 5
-    anchors.bottomMargin: 5
-
     Component {
         id: viewDelegate
-        Row {
+        Item {
             anchors.left: parent.left
             anchors.right: parent.right
-            spacing: 10
+            height: childrenRect.height
             Switch {
+                id: connectedSwitch
                 checked: connected
+                anchors.left: parent.left
                 MouseArea {
                     anchors.fill: parent
                     onClicked: deviceModelFacade.setDeviceConnected(index, !connected)
                 }
             }
-            Text { text: name }
+            Text {
+                anchors.right: parent.right
+                text: name
+            }
         }
     }
-
     ListView {
         anchors.left: parent.left
+        anchors.leftMargin: 10
         anchors.right: parent.right
+        anchors.rightMargin: 10
         height: childrenRect.height
         model: deviceModel
         delegate: viewDelegate

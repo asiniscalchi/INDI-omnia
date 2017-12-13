@@ -28,14 +28,16 @@ ApplicationWindow {
 
     ConnectionBar {
         id: connectionBar
-        height: 60
+        color: "whitesmoke"
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right:parent.right
+        height: 60
     }
 
     DeviceList {
         id: deviceList
+        color: "whitesmoke"
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: connectionBar.bottom

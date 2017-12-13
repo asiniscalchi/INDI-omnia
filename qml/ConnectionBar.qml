@@ -21,38 +21,41 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import Qt.labs.settings 1.0
 
-Item {
-    RowLayout {
-        anchors.topMargin: 20
-        anchors.top: parent.top
-        anchors.horizontalCenter: parent.horizontalCenter
-        spacing: 2.8
+Rectangle {
+    id: item1
+    TextField {
+        id: hostTextField
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+        enabled: !deviceModel.connected
+        text: "localhost"
+        anchors.verticalCenter: parent.verticalCenter
+        placeholderText: qsTr("host")
+    }
 
-        TextField {
-            id: hostTextField
-            enabled: !deviceModel.connected
-            text: "localhost"
-            placeholderText: qsTr("host")
-        }
+    TextField {
+        id: portTextField
+        anchors.left: hostTextField.right
+        anchors.leftMargin: 5
+        enabled: !deviceModel.connected
+        text: "7624"
+        anchors.verticalCenter: parent.verticalCenter
+        placeholderText: qsTr("port")
+    }
 
-        TextField {
-            id: portTextField
-            enabled: !deviceModel.connected
-            text: "7624"
-            placeholderText: qsTr("port")
-        }
-
-        Button {
-            id: connectButton
-            text: deviceModel.connected ? qsTr("Disconnect") : qsTr("Connect")
-            checked: deviceModel.connected
-            checkable: false
-            onClicked: deviceModel.connected ? deviceModel.disconnect() : deviceModel.connect(hostTextField.text, portTextField.text)
-        }
+    Button {
+        id: connectButton
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        text: deviceModel.connected ? qsTr("Disconnect") : qsTr("Connect")
+        anchors.verticalCenter: parent.verticalCenter
+        checked: deviceModel.connected
+        checkable: false
+        onClicked: deviceModel.connected ? deviceModel.disconnect() : deviceModel.connect(hostTextField.text, portTextField.text)
     }
 
     Settings {
-            property alias host: hostTextField.text
-            property alias port: portTextField.text
+        property alias host: hostTextField.text
+        property alias port: portTextField.text
     }
 }
