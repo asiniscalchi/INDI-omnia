@@ -56,4 +56,9 @@ Rectangle {
             Text { text: "Connected" }
         }
     }
+
+    Rectangle {
+        color: "transparent"
+        height: 6
+    }
 }
