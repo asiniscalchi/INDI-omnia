@@ -26,80 +26,27 @@ ApplicationWindow {
     width: 640
     height: 600
 
-    SwipeView {
-        id: swipeView
-        anchors.fill: parent
-        interactive: false
-
-        Item {
-            ConnectionBar {
-                id: connectionBar
-                height: 60
-                anchors.top: parent.top
-                anchors.left: parent.left
-                anchors.right:parent.right
-            }
-
-            LogBox {
-                id: logBox
-                anchors.top: connectionBar.bottom
-                anchors.topMargin: 20
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.bottom: parent.bottom
-            }
-        }
-
-        Item {
-            DeviceList {
-                anchors.fill: parent
-            }
-        }
+    ConnectionBar {
+        id: connectionBar
+        height: 60
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right:parent.right
     }
 
-    PageIndicator {
-        id: pageIndicator
-        x: 303
-        y: 580
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
-        currentIndex: swipeView.currentIndex
-        count: swipeView.count
+    DeviceList {
+        id: deviceList
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: connectionBar.bottom
+        height: childrenRect.height
     }
 
-    Image {
-        width: 30
-        height: width
-        visible: swipeView.currentIndex != 0
-        anchors.right: pageIndicator.left
+    LogBox {
+        id: logBox
+        anchors.top: deviceList.bottom
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 5
-        sourceSize.width: width
-        sourceSize.height: height
-        source: "qrc:/left_arrow.svg"
-        fillMode: Image.PreserveAspectFit
-        MouseArea {
-            anchors.fill: parent
-            onClicked: swipeView.decrementCurrentIndex()
-        }
-    }
-
-    Image {
-        width: 30
-        height: width
-        anchors.rightMargin: 0
-        visible: swipeView.currentIndex != swipeView.count - 1
-        anchors.left: pageIndicator.right
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 5
-        sourceSize.width: width
-        sourceSize.height: height
-        source: "qrc:/right_arrow.svg"
-        fillMode: Image.PreserveAspectFit
-        MouseArea {
-            anchors.fill: parent
-            onClicked: swipeView.incrementCurrentIndex()
-        }
+        anchors.left: parent.left
+        anchors.right: parent.right
     }
 }

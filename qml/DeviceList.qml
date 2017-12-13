@@ -43,7 +43,9 @@ Rectangle {
     }
 
     ListView {
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        height: childrenRect.height
         model: deviceModel
         delegate: viewDelegate
     }
