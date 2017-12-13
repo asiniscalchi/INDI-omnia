@@ -43,15 +43,24 @@ Rectangle {
         placeholderText: qsTr("port")
     }
 
-    Button {
-        id: connectButton
+    Rectangle {
+        id: rectangle
         anchors.right: parent.right
         anchors.rightMargin: 10
-        text: deviceModel.connected ? qsTr("Disconnect") : qsTr("Connect")
         anchors.verticalCenter: parent.verticalCenter
-        checked: deviceModel.connected
-        checkable: false
-        onClicked: deviceModel.connected ? deviceModel.disconnect() : deviceModel.connect(hostTextField.text, portTextField.text)
+        width: 120
+        radius: 3
+        height: portTextField.height
+        color: deviceModel.connected ? "red" : "gray"
+        Text {
+            text: deviceModel.connected ? qsTr("Disconnect") : qsTr("Connect")
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+        }
+        MouseArea {
+            anchors.fill: parent
+            onClicked: deviceModel.connected ? deviceModel.disconnect() : deviceModel.connect(hostTextField.text, portTextField.text)
+        }
     }
 
     Settings {
