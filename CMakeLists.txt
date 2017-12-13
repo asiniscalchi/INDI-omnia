@@ -31,4 +31,6 @@ target_link_libraries(${PROJECT_NAME}
     common
     )
 
+install(TARGETS ${PROJECT_NAME} DESTINATION bin)
+
 add_subdirectory(installer)
