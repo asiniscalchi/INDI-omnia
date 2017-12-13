@@ -44,9 +44,19 @@ ApplicationWindow {
         height: childrenRect.height
     }
 
+    Rectangle {
+        id: divider
+        color: "whitesmoke"
+        anchors.top: deviceList.bottom
+        anchors.left: parent.left
+        anchors.right:parent.right
+        height: 5
+    }
+
     LogBox {
         id: logBox
-        anchors.top: deviceList.bottom
+        color: "#000000"
+        anchors.top: divider.bottom
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
