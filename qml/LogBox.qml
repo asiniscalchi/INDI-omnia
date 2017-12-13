@@ -27,10 +27,16 @@ Rectangle {
         anchors.fill: parent
         model: logModel
 
-        delegate: Text {
+        delegate: TextInput {
+            anchors.left: parent.left
+            anchors.right: parent.right
             color: "green"
             text: display
+            selectByMouse: true
+            readOnly: true
         }
+
+        ScrollBar.vertical: ScrollBar {}
     }
 }
 
