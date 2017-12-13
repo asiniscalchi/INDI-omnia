@@ -29,14 +29,15 @@ Rectangle {
             Switch {
                 id: connectedSwitch
                 checked: connected
-                anchors.left: parent.left
+                anchors.right: parent.right
                 MouseArea {
                     anchors.fill: parent
                     onClicked: deviceModelFacade.setDeviceConnected(index, !connected)
                 }
             }
             Text {
-                anchors.right: parent.right
+                anchors.right: connectedSwitch.left
+                anchors.rightMargin: 10
                 text: name
             }
         }
