@@ -8,18 +8,16 @@ compiler:
   - g++
   - clang
 
-addons:
-  apt:
-    packages:
-      - graphviz
-
 before_install:
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo add-apt-repository --yes ppa:beineri/opt-qt593-trusty; fi;
   - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -qq update; fi;
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -qq install qt59quickcontrols2; fi;
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -qq install ninja-build; fi;
+  - if [ $TRAVIS_OS_NAME = osx ]; then brew update; fi;
 
 install:
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -qq install qt59quickcontrols2; fi;
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -qq install ninja-build; fi;
+  - if [ $TRAVIS_OS_NAME = osx ]; then brew install cppcheck qt@5.9; fi;
+  - if [ $TRAVIS_OS_NAME = osx ]; then brew link --force qt@5.9; fi;
 
 before_script:
   - if [ $TRAVIS_OS_NAME = linux ]; then source /opt/qt59/bin/qt59-env.sh; fi;
