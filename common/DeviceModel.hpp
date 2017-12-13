@@ -45,8 +45,8 @@ public:
     Q_INVOKABLE void disconnect();
     bool isConnected() const;
 
-    int rowCount(const QModelIndex & parent = QModelIndex()) const;
-    QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
+    int rowCount(const QModelIndex & parent = QModelIndex()) const override;
+    QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const override;
     bool setData(const QModelIndex &index, const QVariant &value, int role) override;
     Qt::ItemFlags flags(const QModelIndex &index) const override;
 
@@ -55,7 +55,7 @@ signals:
     void connectedChanged(bool connected);
 
 protected:
-    QHash<int, QByteArray> roleNames() const;
+    QHash<int, QByteArray> roleNames() const override;
 
 private slots:
     void addDevice(const Device &device);

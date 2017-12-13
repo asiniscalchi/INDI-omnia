@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.1.0)
+enable_testing()
 
 project(indi-omnia LANGUAGES CXX C)
 set (CMAKE_CXX_STANDARD 11)
 set (CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -Wno-long-long -pedantic")
 
 set(VERSION_MAJOR "0")
 set(VERSION_MINOR "0")
 set(VERSION_RELEASE "1_devel")
 configure_file (Version.h.in Version.h)
-
-enable_testing()
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
