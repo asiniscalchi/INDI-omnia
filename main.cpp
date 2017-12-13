@@ -19,6 +19,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QIcon>
 
 #include "Version.h"
 #include "common/IndiClient.hpp"
@@ -36,6 +37,7 @@ int main(int argc, char *argv[])
     QGuiApplication::setApplicationName("Indi-Omnia");
     QGuiApplication::setApplicationVersion(QString(VERSION_MAJOR) + "." + QString(VERSION_MINOR) + "." + QString(VERSION_RELEASE));
     QGuiApplication::setApplicationDisplayName(QGuiApplication::applicationName() + " " + QGuiApplication::applicationVersion());
+    QGuiApplication::setWindowIcon(QIcon(":/magic_hat.svg"));
 
     DeviceModel deviceModel;
     DeviceModelFacade deviceModelFacade(deviceModel);
