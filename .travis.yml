@@ -1,15 +1,25 @@
 language: cpp
 
+os:
+  - linux
+
 compiler:
   - gcc
+  - g++
+  - clang
+
+addons:
+  apt:
+    packages:
+      - graphviz
 
 before_install:
-  - sudo add-apt-repository --yes ppa:beineri/opt-qt593-trusty
-  - sudo apt-get -qq update
-  - sudo apt-get -qq install gcc
-  - sudo apt-get -qq install g++
-  - sudo apt-get -qq install qt59quickcontrols2
-  - sudo apt-get -qq install ninja-build
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo add-apt-repository --yes ppa:beineri/opt-qt593-trusty; fi;
+  - if [ $TRAVIS_OS_NAME = linux ]; sudo apt-get -qq update; fi;
+#  - if [ $TRAVIS_OS_NAME = linux ]; sudo apt-get -qq install gcc; fi;
+#  - if [ $TRAVIS_OS_NAME = linux ]; sudo apt-get -qq install g++; fi;
+  - if [ $TRAVIS_OS_NAME = linux ]; sudo apt-get -qq install qt59quickcontrols2; fi;
+  - if [ $TRAVIS_OS_NAME = linux ]; sudo apt-get -qq install ninja-build; fi;
 
 install:
 
