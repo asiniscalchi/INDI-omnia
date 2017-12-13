@@ -42,6 +42,7 @@ Rectangle {
             }
         }
     }
+
     ListView {
         anchors.left: parent.left
         anchors.leftMargin: 10
@@ -50,5 +51,9 @@ Rectangle {
         height: childrenRect.height
         model: deviceModel
         delegate: viewDelegate
+        header: Row{
+            Text { text: "Device" }
+            Text { text: "Connected" }
+        }
     }
 }
