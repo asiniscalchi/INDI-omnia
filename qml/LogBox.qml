@@ -21,22 +21,15 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 
 Rectangle {
-    ScrollView {
+    color: "#000000"
+
+    ListView {
         anchors.fill: parent
+        model: logModel
 
-        TextArea
-        {
-            id: logTextArea
-            verticalAlignment: Text.AlignTop
-            readOnly: true
+        delegate: Text {
             color: "green"
-            selectByKeyboard: true
-            selectByMouse: true
-
-            Connections {
-                target: deviceModel
-                onLog: logTextArea.append(msg)
-            }
+            text: display
         }
     }
 }

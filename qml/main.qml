@@ -26,6 +26,14 @@ ApplicationWindow {
     width: 640
     height: 600
 
+    LogBox {
+        id: logBox
+        anchors.top: divider.bottom
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+    }
+
     ConnectionBar {
         id: connectionBar
         color: "whitesmoke"
@@ -53,12 +61,5 @@ ApplicationWindow {
         height: 5
     }
 
-    LogBox {
-        id: logBox
-        color: "#000000"
-        anchors.top: divider.bottom
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-    }
+
 }

@@ -15,7 +15,7 @@ void LogModel::onLogReceived(QString log)
         return;
     }
 
-    QModelIndex lastIndex = index(rowCount());
+    QModelIndex lastIndex = index(rowCount()-1);
     if (setData(lastIndex, log) == false)
         qWarning() << "LogModel::onLogReceived| can't populate the new row with the log";
 }
