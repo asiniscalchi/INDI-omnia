@@ -41,8 +41,6 @@ Rectangle {
             readOnly: true
         }
 
-
-
         ScrollBar.vertical: ScrollBar { id: scroolBar}
 
         Image {

@@ -30,6 +30,6 @@ void LogFilterModel::applyFilter()
             filter += "(?!\\[" + device + "\\])";
         filter.append(".)*$");
     }
-    qDebug() << "LogFilterModel::applyFilter " + filter;
+
     setFilterRegExp(filter);
 }
