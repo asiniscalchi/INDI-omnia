@@ -26,6 +26,13 @@ Rectangle {
             anchors.left: parent.left
             anchors.right: parent.right
             height: childrenRect.height
+
+            Text {
+                anchors.right: connectedSwitch.left
+                anchors.rightMargin: 10
+                text: name
+            }
+
             Switch {
                 id: connectedSwitch
                 checked: connected
@@ -35,11 +42,7 @@ Rectangle {
                     onClicked: deviceModelFacade.setDeviceConnected(index, !connected)
                 }
             }
-            Text {
-                anchors.right: connectedSwitch.left
-                anchors.rightMargin: 10
-                text: name
-            }
+
         }
     }
 
@@ -51,14 +54,5 @@ Rectangle {
         height: childrenRect.height
         model: deviceModel
         delegate: viewDelegate
-        header: Row{
-            Text { text: "Device" }
-            Text { text: "Connected" }
-        }
-    }
-
-    Rectangle {
-        color: "transparent"
-        height: 6
     }
 }
