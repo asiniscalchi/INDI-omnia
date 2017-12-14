@@ -51,7 +51,7 @@ Rectangle {
             anchors.bottomMargin: 10
             anchors.right: scroolBar.left
             anchors.rightMargin: 5
-            height: 30
+            height: 20
             source: listView.followNewLines ? "log_lock_on.svg" : "log_lock_off.svg"
             sourceSize.width: width
             sourceSize.height: height
