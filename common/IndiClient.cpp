@@ -10,12 +10,12 @@ IndiClient::IndiClient(QObject *parent) : INDI::BaseClientQt(parent)
 
 bool IndiClient::connect(const QString &host, int port)
 {
-    emit message("Connecting to host " + host + " port " + QString::number(port) + "...");
+    emit log("Connecting to host " + host + " port " + QString::number(port) + "...");
     setServer(host.toStdString().c_str(), port);
     bool ans = connectServer();
 
     if (!ans)
-        emit message("(EE) can't connect");
+        emit log("(EE) can't connect");
 
     return ans;
 }
@@ -32,18 +32,18 @@ void IndiClient::disconnect()
 
 void IndiClient::newDevice(INDI::BaseDevice *dp)
 {
-    emit message("newDevice: " + QString(dp->getDeviceName()));
+    emit log("newDevice: " + QString(dp->getDeviceName()));
     emit newDeviceReceived(Device::fromBaseDevice(*dp));
 }
 
 void IndiClient::removeDevice(INDI::BaseDevice *dp)
 {
-    emit message("removeDevice: " + QString(dp->getDeviceName()));
+    emit log("removeDevice: " + QString(dp->getDeviceName()));
 }
 
 void IndiClient::newProperty(INDI::Property *property)
 {
-    emit message("[" + QString(property->getDeviceName()) + "] newProperty : " + QString(property->getName()));
+    emit log("[" + QString(property->getDeviceName()) + "] newProperty : " + QString(property->getName()));
 
     QString deviceName(property->getDeviceName());
     QString propertyConnection(INDI::SP::CONNECTION);
@@ -55,17 +55,17 @@ void IndiClient::newProperty(INDI::Property *property)
 
 void IndiClient::removeProperty(INDI::Property *property)
 {
-    emit message("[" + QString(property->getDeviceName()) + "] removeProperty : " + QString(property->getName()));
+    emit log("[" + QString(property->getDeviceName()) + "] removeProperty : " + QString(property->getName()));
 }
 
 void IndiClient::newBLOB(IBLOB *bp)
 {
-    emit message("[" + QString(bp->name) + "] newBLOB");
+    emit log("[" + QString(bp->name) + "] newBLOB");
 }
 
 void IndiClient::newSwitch(ISwitchVectorProperty *svp)
 {
-    emit message("[" + QString(svp->device) + "] newSwitch : " + QString(svp->name));
+    emit log("[" + QString(svp->device) + "] newSwitch : " + QString(svp->name));
 
     QString deviceName(svp->device);
     QString propertyConnection(INDI::SP::CONNECTION);
@@ -80,32 +80,32 @@ void IndiClient::newSwitch(ISwitchVectorProperty *svp)
 
 void IndiClient::newNumber(INumberVectorProperty *nvp)
 {
-    emit message("[" + QString(nvp->device) + "] newNumber : " + QString(nvp->name));
+    emit log("[" + QString(nvp->device) + "] newNumber : " + QString(nvp->name));
 }
 
 void IndiClient::newText(ITextVectorProperty *tvp)
 {
-    emit message("[" + QString(tvp->device) + "] newText : " + QString(tvp->name));
+    emit log("[" + QString(tvp->device) + "] newText : " + QString(tvp->name));
 }
 
 void IndiClient::newLight(ILightVectorProperty *lvp)
 {
-    emit message("[" + QString(lvp->device) + "] newLight");
+    emit log("[" + QString(lvp->device) + "] newLight");
 }
 
 void IndiClient::newMessage(INDI::BaseDevice *dp, int messageID)
 {
-    emit message("[" + QString(dp->getDeviceName()) + "] newMessage");
+    emit log("[" + QString(dp->getDeviceName()) + "] newMessage");
 }
 
 void IndiClient::serverConnected()
 {
-    emit message("server connected");
+    emit log("server connected");
     emit serverConnectedChanged(true);
 }
 
 void IndiClient::serverDisconnected(int exit_code)
 {
-    emit message("server disconnected (code=" + QString::number(exit_code) + ")");
+    emit log("server disconnected (code=" + QString::number(exit_code) + ")");
     emit serverConnectedChanged(false);
 }

@@ -6,7 +6,6 @@
 DeviceModel::DeviceModel(IndiClient &client, QObject *parent) : QAbstractListModel(parent)
   , mClient(client)
 {
-    QObject::connect(&mClient, &IndiClient::message, this, &DeviceModel::log, Qt::QueuedConnection);
     QObject::connect(&mClient, &IndiClient::serverConnectedChanged, this, &DeviceModel::onServerConnectedChanged, Qt::QueuedConnection);
     QObject::connect(&mClient, &IndiClient::newDeviceReceived, this, &DeviceModel::onAddDeviceReceived, Qt::QueuedConnection);
     QObject::connect(&mClient, &IndiClient::deviceConnectedChanged, this, &DeviceModel::onDeviceConnectedChanged, Qt::QueuedConnection);

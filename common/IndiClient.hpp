@@ -50,7 +50,7 @@ public:
     void serverDisconnected(int exit_code) final;
 
 signals:
-    void message(const QString& msg);
+    void log(const QString& msg);
     void serverConnectedChanged(bool connected);
     void newDeviceReceived(Device device);
     void deviceConnectedChanged(QString name, bool connected);

@@ -50,7 +50,6 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const override;
 
 signals:
-    void log(QString msg);
     void connectedChanged(bool connected);
 
 protected:
