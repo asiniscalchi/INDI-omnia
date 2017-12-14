@@ -36,7 +36,7 @@ Rectangle {
                 sourceSize.height: height
                 MouseArea {
                     anchors.fill: parent
-                    onClicked: deviceModelFacade.setDeviceConnected(index, !connected)
+                    onClicked: connected ? deviceModelFacade.disconnectDevice(index) : deviceModelFacade.connectDevice(index)
                 }
             }
 

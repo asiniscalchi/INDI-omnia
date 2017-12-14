@@ -8,7 +8,8 @@ void TestDeviceModelFacade::connectDeviceOnNotConnectedModel()
     DeviceModel model(client);
     DeviceModelFacade facede(model);
 
-    QVERIFY(facede.setDeviceConnected(0, true) == false);
+    QVERIFY(facede.connectDevice(0) == false);
+    QVERIFY(facede.disconnectDevice(0) == false);
 }
 
 QTEST_MAIN(TestDeviceModelFacade)

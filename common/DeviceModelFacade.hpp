@@ -11,7 +11,8 @@ class DeviceModelFacade : public QObject
 public:
     explicit DeviceModelFacade(DeviceModel& model, QObject *parent = nullptr);
 
-    Q_INVOKABLE bool setDeviceConnected(int row, bool connected);
+    Q_INVOKABLE bool connectDevice(int row);
+    Q_INVOKABLE bool disconnectDevice(int row);
 
 private:
     DeviceModel& mModel;

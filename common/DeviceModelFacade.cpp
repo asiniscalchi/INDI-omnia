@@ -6,9 +6,15 @@ DeviceModelFacade::DeviceModelFacade(DeviceModel &model, QObject *parent) : QObj
 
 }
 
-bool DeviceModelFacade::setDeviceConnected(int row, bool connected)
+bool DeviceModelFacade::connectDevice(int row)
 {
     QModelIndex modelIndex = mModel.index(row, 0);
-    return mModel.setData(modelIndex, connected, DeviceModel::ConnectedRole);
+    return mModel.setData(modelIndex, true, DeviceModel::ConnectedRole);
+}
+
+bool DeviceModelFacade::disconnectDevice(int row)
+{
+    QModelIndex modelIndex = mModel.index(row, 0);
+    return mModel.setData(modelIndex, false, DeviceModel::ConnectedRole);
 }
 
