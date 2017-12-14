@@ -28,21 +28,38 @@ Rectangle {
             height: childrenRect.height
 
             Text {
+                id: deviceName
                 anchors.right: connectedSwitch.left
                 anchors.rightMargin: 10
                 text: name
             }
 
-            Switch {
+            Image {
+                height: deviceName.height
                 id: connectedSwitch
-                checked: connected
-                anchors.right: parent.right
+                source: connected ? "on.svg" : "off.svg"
+                sourceSize.width: width
+                sourceSize.height: height
+                anchors.right: logButton.left
                 MouseArea {
                     anchors.fill: parent
                     onClicked: deviceModelFacade.setDeviceConnected(index, !connected)
                 }
             }
 
+            Image {
+                id: logButton
+                antialiasing: true
+                anchors.right: parent.right
+                height: deviceName.height - 2
+                source: connected ? "log_on.svg" : "log_off.svg"
+                sourceSize.width: width
+                sourceSize.height: height
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: deviceModelFacade.setDeviceConnected(index, !connected)
+                }
+            }
         }
     }
 

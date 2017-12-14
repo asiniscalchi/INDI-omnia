@@ -3,5 +3,9 @@
         <file>left_arrow.svg</file>
         <file>right_arrow.svg</file>
         <file>magic_hat.svg</file>
+        <file>log_on.svg</file>
+        <file>off.svg</file>
+        <file>on.svg</file>
+        <file>log_off.svg</file>
     </qresource>
 </RCC>
