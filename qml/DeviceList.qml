@@ -40,23 +40,27 @@ Rectangle {
                 }
             }
 
-//            Image {
-//                id: logButton
-//                anchors.left: connectButton.right
-//                anchors.leftMargin: 2
-//                height: deviceName.height
-//                source: connected ? "log_on.svg" : "log_off.svg"
-//                sourceSize.width: width
-//                sourceSize.height: height
-//                MouseArea {
-//                    anchors.fill: parent
-////                    onClicked: deviceModelFacade.setDeviceConnected(index, !connected)
-//                }
-//            }
+            Image {
+                id: logButton
+                property bool filtered: false
+                anchors.left: connectButton.right
+                anchors.leftMargin: 2
+                height: deviceName.height
+                source: filtered ? "log_off.svg" : "log_on.svg"
+                sourceSize.width: width
+                sourceSize.height: height
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        logButton.filtered ? logModel.removeFilter(name) : logModel.addFilter(name);
+                        logButton.filtered = !logButton.filtered;
+                    }
+                }
+            }
 
             Text {
                 id: deviceName
-                anchors.left: connectButton.right
+                anchors.left: logButton.right
                 anchors.leftMargin: 5
                 text: name
             }

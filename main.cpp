@@ -26,6 +26,7 @@
 #include "common/DeviceModel.hpp"
 #include "common/DeviceModelFacade.hpp"
 #include "common/LogModel.hpp"
+#include "common/LogFilterModel.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -42,13 +43,15 @@ int main(int argc, char *argv[])
 
     IndiClient client;
     LogModel logModel(client);
+    LogFilterModel logFilterModel;
+    logFilterModel.setSourceModel(&logModel);
     DeviceModel deviceModel(client);
     DeviceModelFacade deviceModelFacade(deviceModel);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("deviceModel", &deviceModel);
     engine.rootContext()->setContextProperty("deviceModelFacade", &deviceModelFacade);
-    engine.rootContext()->setContextProperty("logModel", &logModel);
+    engine.rootContext()->setContextProperty("logModel", &logFilterModel);
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;

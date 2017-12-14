@@ -14,6 +14,8 @@ add_library(common
     DeviceModelFacade.cpp
     LogModel.hpp
     LogModel.cpp
+    LogFilterModel.hpp
+    LogFilterModel.cpp
     )
 
 target_link_libraries(common Qt5::Qml indiclient)
