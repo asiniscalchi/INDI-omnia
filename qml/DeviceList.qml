@@ -27,39 +27,39 @@ Rectangle {
             anchors.right: parent.right
             height: childrenRect.height
 
-
-
             Image {
+                id: connectButton
+                anchors.left: parent.left
                 height: deviceName.height
-                id: connectedSwitch
                 source: connected ? "on.svg" : "off.svg"
                 sourceSize.width: width
                 sourceSize.height: height
-//                anchors.right: logButton.left
                 MouseArea {
                     anchors.fill: parent
                     onClicked: deviceModelFacade.setDeviceConnected(index, !connected)
                 }
             }
 
-            Text {
-                id: deviceName
-                anchors.left: connectedSwitch.right
-                anchors.leftMargin: 10
-                text: name
-            }
-
 //            Image {
 //                id: logButton
-//                height: deviceName.height - 2
+//                anchors.left: connectButton.right
+//                anchors.leftMargin: 2
+//                height: deviceName.height
 //                source: connected ? "log_on.svg" : "log_off.svg"
 //                sourceSize.width: width
 //                sourceSize.height: height
 //                MouseArea {
 //                    anchors.fill: parent
-//                    onClicked: deviceModelFacade.setDeviceConnected(index, !connected)
+////                    onClicked: deviceModelFacade.setDeviceConnected(index, !connected)
 //                }
 //            }
+
+            Text {
+                id: deviceName
+                anchors.left: connectButton.right
+                anchors.leftMargin: 5
+                text: name
+            }
         }
     }
 
