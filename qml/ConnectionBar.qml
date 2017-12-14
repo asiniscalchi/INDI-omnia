@@ -51,9 +51,10 @@ Rectangle {
         width: 120
         radius: 3
         height: portTextField.height
-        color: deviceModel.connected ? "red" : "gray"
+        color: "#38454f"
         Text {
             text: deviceModel.connected ? qsTr("Disconnect") : qsTr("Connect")
+            color: deviceModel.connected ? "#ed7161" : "white"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
         }
