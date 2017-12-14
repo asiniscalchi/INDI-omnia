@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("deviceModel", &deviceModel);
     engine.rootContext()->setContextProperty("deviceModelFacade", &deviceModelFacade);
-    engine.rootContext()->setContextProperty("logModel", &logFilterModel);
+    engine.rootContext()->setContextProperty("logFilterModel", &logFilterModel);
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;

@@ -95,7 +95,7 @@ void IndiClient::newLight(ILightVectorProperty *lvp)
 
 void IndiClient::newMessage(INDI::BaseDevice *dp, int messageID)
 {
-    emit message("[" + QString(dp->getDeviceName()) + "[ newMessage");
+    emit message("[" + QString(dp->getDeviceName()) + "] newMessage");
 }
 
 void IndiClient::serverConnected()

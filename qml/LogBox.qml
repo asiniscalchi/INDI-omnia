@@ -25,7 +25,7 @@ Rectangle {
 
     ListView {
         anchors.fill: parent
-        model: logModel
+        model: logFilterModel
 
         delegate: TextInput {
             anchors.left: parent.left

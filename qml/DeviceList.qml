@@ -52,7 +52,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        logButton.filtered ? logModel.removeFilter(name) : logModel.addFilter(name);
+                        logButton.filtered ? logFilterModel.removeFilter(name) : logFilterModel.addFilter(name);
                         logButton.filtered = !logButton.filtered;
                     }
                 }
