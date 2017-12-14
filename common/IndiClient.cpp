@@ -22,7 +22,7 @@ bool IndiClient::connect(const QString &host, int port)
 
 bool IndiClient::isConnected() const
 {
-    return mConnected;
+    return isServerConnected();
 }
 
 void IndiClient::disconnect()
@@ -101,14 +101,12 @@ void IndiClient::newMessage(INDI::BaseDevice *dp, int messageID)
 void IndiClient::serverConnected()
 {
     emit message("server connected");
-    mConnected = true;
-    emit connectedChanged(mConnected);
+    emit connectedChanged(true);
 }
 
 void IndiClient::serverDisconnected(int exit_code)
 {
     emit message("server disconnected (code=" + QString::number(exit_code) + ")");
-    mConnected = false;
-    emit connectedChanged(mConnected);
+    emit connectedChanged(false);
     emit serverDisconnectedReceived(exit_code);
 }
