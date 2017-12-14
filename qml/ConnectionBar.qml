@@ -27,6 +27,7 @@ Rectangle {
         id: hostTextField
         anchors.left: parent.left
         anchors.leftMargin: 10
+        height: parent.height * 0.8
         enabled: !deviceModel.connected
         text: "localhost"
         anchors.verticalCenter: parent.verticalCenter
@@ -37,6 +38,7 @@ Rectangle {
         id: portTextField
         anchors.left: hostTextField.right
         anchors.leftMargin: 5
+        height: parent.height * 0.8
         enabled: !deviceModel.connected
         text: "7624"
         anchors.verticalCenter: parent.verticalCenter
@@ -48,9 +50,9 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: 10
         anchors.verticalCenter: parent.verticalCenter
+        height: parent.height * 0.85
         width: 120
         radius: 3
-        height: portTextField.height
         color: "#38454f"
         Text {
             text: deviceModel.connected ? qsTr("Disconnect") : qsTr("Connect")
