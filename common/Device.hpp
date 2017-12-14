@@ -21,6 +21,8 @@
 
 #include <QString>
 
+#include <QMetaType>
+
 #include "indibase/basedevice.h"
 
 struct Device
@@ -32,5 +34,6 @@ struct Device
     static Device fromBaseDevice(const INDI::BaseDevice &baseDevice);
 };
 
+Q_DECLARE_METATYPE(Device)
 
 #endif // DEVICE_HPP
