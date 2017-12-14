@@ -35,14 +35,6 @@ ApplicationWindow {
         height: 60
     }
 
-    DeviceList {
-        id: deviceList
-        color: "whitesmoke"
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: connectionBar.bottom
-        height: childrenRect.height
-    }
 
     LogBox {
         id: logBox
@@ -51,4 +43,15 @@ ApplicationWindow {
         anchors.left: parent.left
         anchors.right: parent.right
     }
+
+    DeviceList {
+        id: deviceList
+        visible: deviceModel.connected
+        color: "whitesmoke"
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: connectionBar.bottom
+        height: childrenRect.height
+    }
+
 }
