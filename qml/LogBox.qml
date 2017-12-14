@@ -24,8 +24,13 @@ Rectangle {
     color: "#000000"
 
     ListView {
+        property bool followNewLines: true
+
+        id: listView
         anchors.fill: parent
+        highlightFollowsCurrentItem: true
         model: logFilterModel
+        currentIndex: followNewLines ? count - 1 : -1
 
         delegate: TextInput {
             anchors.left: parent.left
@@ -36,7 +41,25 @@ Rectangle {
             readOnly: true
         }
 
-        ScrollBar.vertical: ScrollBar {}
+
+
+        ScrollBar.vertical: ScrollBar { id: scroolBar}
+
+        Image {
+            id: connectButton
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+            anchors.right: scroolBar.left
+            anchors.rightMargin: 5
+            height: 30
+            source: listView.followNewLines ? "log_lock_on.svg" : "log_lock_off.svg"
+            sourceSize.width: width
+            sourceSize.height: height
+            MouseArea {
+                anchors.fill: parent
+                onClicked: listView.followNewLines = !listView.followNewLines
+            }
+        }
     }
 }
 

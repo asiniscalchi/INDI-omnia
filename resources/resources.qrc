@@ -7,5 +7,7 @@
         <file>off.svg</file>
         <file>on.svg</file>
         <file>log_off.svg</file>
+        <file>log_lock_off.svg</file>
+        <file>log_lock_on.svg</file>
     </qresource>
 </RCC>
