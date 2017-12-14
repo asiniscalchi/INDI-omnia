@@ -51,9 +51,8 @@ public:
 
 signals:
     void message(const QString& msg);
-    void connectedChanged(bool connected);
+    void serverConnectedChanged(bool connected);
     void newDeviceReceived(Device device);
-    void serverDisconnectedReceived(int exit_code);
     void deviceConnectedChanged(QString name, bool connected);
 
 private:

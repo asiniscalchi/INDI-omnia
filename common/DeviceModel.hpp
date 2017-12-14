@@ -40,7 +40,6 @@ public:
 
     DeviceModel(IndiClient& client, QObject *parent = 0);
 
-    void setConnection(IndiClient* connection);
     Q_INVOKABLE bool connect(const QString& host, int port);
     Q_INVOKABLE void disconnect();
     bool isConnected() const;
@@ -58,9 +57,9 @@ protected:
     QHash<int, QByteArray> roleNames() const override;
 
 private slots:
-    void addDevice(const Device &device);
+    void onAddDeviceReceived(const Device &device);
     void onDeviceConnectedChanged(QString name, bool connected);
-    void clear();
+    void onServerConnectedChanged(bool connected);
 
 private:
     QList<Device> mDevices;

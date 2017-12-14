@@ -101,12 +101,11 @@ void IndiClient::newMessage(INDI::BaseDevice *dp, int messageID)
 void IndiClient::serverConnected()
 {
     emit message("server connected");
-    emit connectedChanged(true);
+    emit serverConnectedChanged(true);
 }
 
 void IndiClient::serverDisconnected(int exit_code)
 {
     emit message("server disconnected (code=" + QString::number(exit_code) + ")");
-    emit connectedChanged(false);
-    emit serverDisconnectedReceived(exit_code);
+    emit serverConnectedChanged(false);
 }

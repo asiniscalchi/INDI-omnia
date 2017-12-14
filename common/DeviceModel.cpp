@@ -7,9 +7,8 @@ DeviceModel::DeviceModel(IndiClient &client, QObject *parent) : QAbstractListMod
   , mClient(client)
 {
     QObject::connect(&mClient, &IndiClient::message, this, &DeviceModel::log);
-    QObject::connect(&mClient, &IndiClient::connectedChanged, this, &DeviceModel::connectedChanged);
-    QObject::connect(&mClient, &IndiClient::newDeviceReceived, this, &DeviceModel::addDevice);
-    QObject::connect(&mClient, &IndiClient::serverDisconnectedReceived, this, &DeviceModel::clear);
+    QObject::connect(&mClient, &IndiClient::serverConnectedChanged, this, &DeviceModel::onServerConnectedChanged);
+    QObject::connect(&mClient, &IndiClient::newDeviceReceived, this, &DeviceModel::onAddDeviceReceived);
     QObject::connect(&mClient, &IndiClient::deviceConnectedChanged, this, &DeviceModel::onDeviceConnectedChanged);
 }
 
@@ -27,7 +26,7 @@ bool DeviceModel::isConnected() const
     return mClient.isConnected();
 }
 
-void DeviceModel::addDevice(const Device &device)
+void DeviceModel::onAddDeviceReceived(const Device &device)
 {
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     mDevices << device;
@@ -50,11 +49,16 @@ void DeviceModel::onDeviceConnectedChanged(QString name, bool connected)
     }
 }
 
-void DeviceModel::clear()
+void DeviceModel::onServerConnectedChanged(bool connected)
 {
-    beginResetModel();
-    mDevices.clear();
-    endResetModel();
+    if (connected == false)
+    {
+        beginResetModel();
+        mDevices.clear();
+        endResetModel();
+    }
+
+    emit connectedChanged(connected);
 }
 
 int DeviceModel::rowCount(const QModelIndex & parent) const {
