@@ -3,30 +3,28 @@
 #include <QDebug>
 #include <QQmlEngine>
 
-DeviceModel::DeviceModel(QObject *parent)
-    : QAbstractListModel(parent)
+DeviceModel::DeviceModel(IndiClient &client, QObject *parent) : QAbstractListModel(parent)
+  , mClient(client)
 {
-    qmlRegisterType<DeviceModel>("DeviceRoles", 1, 0, "DeviceRoles");
-
-    QObject::connect(&mConnection, &IndiClient::message, this, &DeviceModel::log);
-    QObject::connect(&mConnection, &IndiClient::connectedChanged, this, &DeviceModel::connectedChanged);
-    QObject::connect(&mConnection, &IndiClient::newDeviceReceived, this, &DeviceModel::addDevice);
-    QObject::connect(&mConnection, &IndiClient::serverDisconnectedReceived, this, &DeviceModel::clear);
-    QObject::connect(&mConnection, &IndiClient::deviceConnectedChanged, this, &DeviceModel::onDeviceConnectedChanged);
+    QObject::connect(&mClient, &IndiClient::message, this, &DeviceModel::log);
+    QObject::connect(&mClient, &IndiClient::connectedChanged, this, &DeviceModel::connectedChanged);
+    QObject::connect(&mClient, &IndiClient::newDeviceReceived, this, &DeviceModel::addDevice);
+    QObject::connect(&mClient, &IndiClient::serverDisconnectedReceived, this, &DeviceModel::clear);
+    QObject::connect(&mClient, &IndiClient::deviceConnectedChanged, this, &DeviceModel::onDeviceConnectedChanged);
 }
 
 bool DeviceModel::connect(const QString &host, int port)
 {
-    return mConnection.connect(host, port);
+    return mClient.connect(host, port);
 }
 void DeviceModel::disconnect()
 {
-    mConnection.disconnectServer();
+    mClient.disconnectServer();
 }
 
 bool DeviceModel::isConnected() const
 {
-    return mConnection.isConnected();
+    return mClient.isConnected();
 }
 
 void DeviceModel::addDevice(const Device &device)
@@ -106,9 +104,9 @@ bool DeviceModel::setData(const QModelIndex &index, const QVariant &value, int r
     if (role == ConnectedRole)
     {
         if (value.toBool())
-            mConnection.connectDevice(name.toStdString().c_str());
+            mClient.connectDevice(name.toStdString().c_str());
         else
-            mConnection.disconnectDevice(name.toStdString().c_str());
+            mClient.disconnectDevice(name.toStdString().c_str());
     }
 
     return true;

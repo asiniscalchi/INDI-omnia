@@ -37,10 +37,10 @@ public:
         ConnectedRole,
         DeviceInterfaceRole
     };
-    Q_ENUMS(DeviceRoles)
 
-    DeviceModel(QObject *parent = 0);
+    DeviceModel(IndiClient& client, QObject *parent = 0);
 
+    void setConnection(IndiClient* connection);
     Q_INVOKABLE bool connect(const QString& host, int port);
     Q_INVOKABLE void disconnect();
     bool isConnected() const;
@@ -64,7 +64,7 @@ private slots:
 
 private:
     QList<Device> mDevices;
-    IndiClient mConnection;
+    IndiClient& mClient;
 };
 
 #endif // DEVICEMODEL_HPP

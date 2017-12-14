@@ -40,11 +40,10 @@ int main(int argc, char *argv[])
     QGuiApplication::setApplicationDisplayName(QGuiApplication::applicationName() + " " + QGuiApplication::applicationVersion());
     QGuiApplication::setWindowIcon(QIcon(":/magic_hat.svg"));
 
-    DeviceModel deviceModel;
+    IndiClient client;
+    LogModel logModel(client);
+    DeviceModel deviceModel(client);
     DeviceModelFacade deviceModelFacade(deviceModel);
-    LogModel logModel;
-
-    QObject::connect(&deviceModel, &DeviceModel::log, &logModel, &LogModel::onLogReceived);
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("deviceModel", &deviceModel);

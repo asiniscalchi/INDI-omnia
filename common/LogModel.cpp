@@ -2,9 +2,9 @@
 
 #include <QDebug>
 
-LogModel::LogModel(QObject *parent) : QStringListModel(parent)
+LogModel::LogModel(IndiClient &client, QObject *parent) : QStringListModel(parent)
 {
-
+    QObject::connect(&client, &IndiClient::message, this, &LogModel::onLogReceived);
 }
 
 void LogModel::onLogReceived(QString log)

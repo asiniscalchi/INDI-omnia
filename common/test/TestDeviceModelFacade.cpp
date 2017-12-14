@@ -4,7 +4,8 @@
 
 void TestDeviceModelFacade::connectDeviceOnNotConnectedModel()
 {
-    DeviceModel model;
+    IndiClient client;
+    DeviceModel model(client);
     DeviceModelFacade facede(model);
 
     QVERIFY(facede.setDeviceConnected(0, true) == false);
