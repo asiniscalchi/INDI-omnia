@@ -6,8 +6,6 @@
 DeviceModel::DeviceModel(IndiClient &client, QObject *parent) : QAbstractListModel(parent)
   , mClient(client)
 {
-    qRegisterMetaType<Device>();
-
     QObject::connect(&mClient, &IndiClient::message, this, &DeviceModel::log, Qt::QueuedConnection);
     QObject::connect(&mClient, &IndiClient::serverConnectedChanged, this, &DeviceModel::onServerConnectedChanged, Qt::QueuedConnection);
     QObject::connect(&mClient, &IndiClient::newDeviceReceived, this, &DeviceModel::onAddDeviceReceived, Qt::QueuedConnection);
@@ -53,6 +51,8 @@ void DeviceModel::onDeviceConnectedChanged(QString name, bool connected)
 
 void DeviceModel::onServerConnectedChanged(bool connected)
 {
+    qDebug() << "DeviceModel::onServerConnectedChanged(" << connected << ")";
+
     if (connected == false)
     {
         beginResetModel();

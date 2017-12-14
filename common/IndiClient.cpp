@@ -5,7 +5,7 @@
 
 IndiClient::IndiClient(QObject *parent) : INDI::BaseClientQt(parent)
 {
-
+    qRegisterMetaType<Device>();
 }
 
 bool IndiClient::connect(const QString &host, int port)
