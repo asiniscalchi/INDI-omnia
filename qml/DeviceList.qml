@@ -41,8 +41,9 @@ Rectangle {
             }
 
             Image {
-                id: logButton
                 property bool filtered: false
+
+                id: logButton
                 anchors.left: connectButton.right
                 anchors.leftMargin: 2
                 height: deviceName.height
