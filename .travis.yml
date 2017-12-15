@@ -2,7 +2,7 @@ language: cpp
 
 os:
   - linux
-#  - osx
+  - osx
 
 compiler:
   - g++
@@ -14,13 +14,12 @@ before_install:
   - if [ $TRAVIS_OS_NAME = osx ]; then brew update; fi;
 
 install:
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -qq install qt59quickcontrols2; fi;
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -qq install ninja-build; fi;
-  - if [ $TRAVIS_OS_NAME = osx ]; then brew install cppcheck qt@5.9; fi;
-  - if [ $TRAVIS_OS_NAME = osx ]; then brew link --force qt@5.9; fi;
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get -qq install qt59quickcontrols2 ninja-build; fi;
+  - if [ $TRAVIS_OS_NAME = osx ]; then brew install cppcheck qt@5.9 ninja; fi;
 
 before_script:
   - if [ $TRAVIS_OS_NAME = linux ]; then source /opt/qt59/bin/qt59-env.sh; fi;
+  - if [ $TRAVIS_OS_NAME = osx ]; then export PATH="$(brew --prefix qt@5.5)/bin:$PATH"; fi
   - mkdir build
   - cd build
 
