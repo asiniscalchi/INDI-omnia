@@ -1,9 +1,37 @@
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 
-find_package(ZLIB REQUIRED)
-find_package (Threads REQUIRED)
+find_package(Threads REQUIRED)
 find_package(Qt5Network)
+
+add_library(zlib
+    zlib/adler32.c
+    zlib/compress.c
+    zlib/crc32.c
+    zlib/crc32.h
+    zlib/deflate.c
+    zlib/deflate.h
+    zlib/gzclose.c
+    zlib/gzguts.h
+    zlib/gzlib.c
+    zlib/gzread.c
+    zlib/gzwrite.c
+    zlib/infback.c
+    zlib/inffast.c
+    zlib/inffast.h
+    zlib/inffixed.h
+    zlib/inflate.c
+    zlib/inflate.h
+    zlib/inftrees.c
+    zlib/inftrees.h
+    zlib/trees.c
+    zlib/trees.h
+    zlib/uncompr.c
+    zlib/zconf.h
+    zlib/zlib.h
+    zlib/zutil.c
+    zlib/zutil.h)
+target_include_directories(zlib INTERFACE zlib)
 
 set(INDI_SOVERSION "1")
 set(CMAKE_INDI_VERSION_MAJOR 1)
@@ -35,6 +63,6 @@ add_library(indiclient
     libindi/libs/indibase/indistandardproperty.cpp
     )
 
-target_link_libraries(indiclient Qt5::Network ${CMAKE_THREAD_LIBS_INIT} ${ZLIB_LIBRARIES})
+target_link_libraries(indiclient Qt5::Network ${CMAKE_THREAD_LIBS_INIT} zlib)
 target_include_directories(indiclient INTERFACE libindi)
 target_include_directories(indiclient INTERFACE libindi/libs)
