@@ -10,12 +10,8 @@ environment:
 before_build:
 - cmd: >-
     cd c:\indi-omnia
-
     mkdir build && cd build
-
     cmake -G "Visual Studio 14 2015 Win64" ..
-
-    dir
 build:
   project: c:\indi-omnia\build\INSTALL.vcxproj
   parallel: true
