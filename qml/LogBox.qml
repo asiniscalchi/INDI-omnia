@@ -43,6 +43,13 @@ Rectangle {
 
         ScrollBar.vertical: ScrollBar { id: scroolBar}
 
+        MouseArea {
+            anchors.fill: parent
+            enabled: listView.followNewLines
+            onPositionChanged: listView.followNewLines = false
+            onWheel: listView.followNewLines = false
+        }
+
         Image {
             id: connectButton
             anchors.bottom: parent.bottom
