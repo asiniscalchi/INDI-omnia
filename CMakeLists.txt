@@ -7,8 +7,8 @@ set (CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -Wall -Wno-long-long -pedantic")
 
 set(VERSION_MAJOR "0")
-set(VERSION_MINOR "0")
-set(VERSION_RELEASE "1_devel")
+set(VERSION_MINOR "1")
+set(VERSION_RELEASE "0-alpha")
 configure_file (Version.h.in Version.h)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
