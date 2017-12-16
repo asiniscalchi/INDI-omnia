@@ -8,7 +8,7 @@ SET(CPACK_PACKAGE_VERSION_PATCH "${VERSION_RELEASE}")#
 
 include(CPack)
 
-if(WIND32 OR APPLE)
+if(WIN32 OR APPLE)
     include(CPackIFW)
     set(CPACK_IFW_PACKAGE_NAME ${CMAKE_PROJECT_NAME})
     cpack_add_component(${CMAKE_PROJECT_NAME} DISPLAY_NAME "Indi-Omnia")
