@@ -34,5 +34,5 @@ deploy:
     file: "indi-omnia-*"
     on:
       condition: ($TRAVIS_OS_NAME = linux) && ($CXX = g++) || ($TRAVIS_OS_NAME = osx) && ($CXX = clang++)
-      tags: false
+      tags: true
 
