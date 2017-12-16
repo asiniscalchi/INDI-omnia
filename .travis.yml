@@ -33,11 +33,6 @@ deploy:
     file_glob: true
     file: "indi-omnia-*.deb"
     on:
-      os: linux
-      compiler: g++
-      tags: true
-    on:
-      os: osx
-      compiler: clang
+      condition: ($TRAVIS_OS_NAME = linux) && ($CXX = g++) || ($TRAVIS_OS_NAME = osx) && ($CXX = clang)
       tags: true
 
