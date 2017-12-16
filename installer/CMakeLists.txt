@@ -6,10 +6,10 @@ SET(CPACK_PACKAGE_VERSION_PATCH "${VERSION_RELEASE}")#
 #set(CPACK_PACKAGE_NAME "MyPackage")
 #set(CPACK_PACKAGE_VERSION "1.0.0") # Version of installer
 
-include(CPack)
+include(CPackIFW)
 
 if(WIN32 OR APPLE)
-    include(CPackIFW)
+    set(CPACK_GENERATOR "IFW")
     set(CPACK_IFW_PACKAGE_NAME ${CMAKE_PROJECT_NAME})
     cpack_add_component(${CMAKE_PROJECT_NAME} DISPLAY_NAME "Indi-Omnia")
     set(CPACK_IFW_VERBOSE ON)
@@ -17,3 +17,5 @@ else()
     set(CPACK_GENERATOR "DEB")
     set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 endif()
+
+include(CPack)
