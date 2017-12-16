@@ -15,12 +15,13 @@ before_build:
 
     cmake -G "Visual Studio 14 2015 Win64" ..
 
-    cpack -C Release
-
 build:
   project: c:\indi-omnia\build\INSTALL.vcxproj
   parallel: true
   verbosity: minimal
+after_build:
+    cpack -C Release
+
 test_script:
 - cmd: ctest --output-on-failure
 
