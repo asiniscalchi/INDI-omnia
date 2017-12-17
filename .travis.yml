@@ -33,6 +33,6 @@ deploy:
     file_glob: true
     file: "indiomnia-*"
     on:
-      condition: ($TRAVIS_OS_NAME = linux) && ($CXX = g++) || ($TRAVIS_OS_NAME = osx) && ($CXX = clang++)
+      condition: ($TRAVIS_OS_NAME = linux) && ($CXX = g++)
       tags: true
 

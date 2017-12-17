@@ -28,7 +28,7 @@ deploy:
   provider: GitHub
   auth_token:
     secure: ANohpQYwjELgG3tdPa2eTbM/OVsEl6HAnqU5kK/ZrXn+qsk3AE1gUm2qaUGLMqRE
-  artifact: /indiomnia\\build\\indiomnia-.*/
+  artifact: /indiomnia-.*/
   draft: false
   prerelease: false
   on:
