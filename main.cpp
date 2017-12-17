@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     QGuiApplication::setOrganizationName("Lysergic");
     QGuiApplication::setApplicationName("Indi-Omnia");
-    QGuiApplication::setApplicationVersion(QString(VERSION_MAJOR) + "." + QString(VERSION_MINOR) + "." + QString(VERSION_RELEASE));
+    QGuiApplication::setApplicationVersion(QString(VERSION_MAJOR) + "." + QString(VERSION_MINOR) + "." + QString(VERSION_PATCH));
     QGuiApplication::setApplicationDisplayName(QGuiApplication::applicationName() + " " + QGuiApplication::applicationVersion());
     QGuiApplication::setWindowIcon(QIcon(":/magic_hat.svg"));
 

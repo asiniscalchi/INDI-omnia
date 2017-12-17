@@ -7,7 +7,7 @@ set (CMAKE_C_STANDARD 11)
 
 set(VERSION_MAJOR "0")
 set(VERSION_MINOR "1")
-set(VERSION_RELEASE "0-alpha")
+set(VERSION_PATCH "0")
 configure_file (Version.h.in Version.h)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
