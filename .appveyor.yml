@@ -20,10 +20,9 @@ build:
   parallel: true
   verbosity: minimal
 after_build:
-    cpack -C Release
+    ctest --output-on-failure
 
-test_script:
-- cmd: ctest --output-on-failure
+    cpack -C Release
 
 deploy:
   provider: GitHub
