@@ -28,10 +28,15 @@ deploy:
   provider: GitHub
   auth_token:
     secure: ANohpQYwjELgG3tdPa2eTbM/OVsEl6HAnqU5kK/ZrXn+qsk3AE1gUm2qaUGLMqRE
-  artifact: /indi-omnia\\build\\indi-omnia-.*/
+  artifact: /indiomnia\\build\\indiomnia-.*/
   draft: false
   prerelease: false
   on:
     appveyor_repo_tag: true        # deploy on tag push only
+
+after_deploy:
+  dir
+
+
 
 
