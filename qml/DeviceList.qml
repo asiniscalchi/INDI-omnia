@@ -32,7 +32,6 @@ Rectangle {
                 anchors.left: parent.left
                 height: deviceName.height
                 source: connected ? "on.svg" : "off.svg"
-                sourceSize.width: width
                 sourceSize.height: height
                 MouseArea {
                     anchors.fill: parent
@@ -48,7 +47,6 @@ Rectangle {
                 anchors.leftMargin: 2
                 height: deviceName.height
                 source: filtered ? "log_off.svg" : "log_on.svg"
-                sourceSize.width: width
                 sourceSize.height: height
                 MouseArea {
                     anchors.fill: parent
