@@ -34,7 +34,9 @@ int main(int argc, char *argv[])
     Q_INIT_RESOURCE(qml);
     Q_INIT_RESOURCE(resources);
 
+#ifdef __ANDROID__
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
     QGuiApplication app(argc, argv);
     QGuiApplication::setOrganizationName("Lysergic");
     QGuiApplication::setApplicationName("Indi-Omnia");
