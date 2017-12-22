@@ -37,7 +37,7 @@ Rectangle {
             anchors.right: parent.right
             color: "green"
             text: display
-            selectByMouse: true
+            //selectByMouse: true
             readOnly: true
         }
 
