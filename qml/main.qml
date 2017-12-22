@@ -26,6 +26,14 @@ ApplicationWindow {
     width: 640
     height: 600
 
+    LogBox {
+        id: logBox
+        anchors.top: deviceModel.connected ? deviceList.bottom : connectionBar.bottom
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+    }
+
     ConnectionBar {
         id: connectionBar
         color: "whitesmoke"
@@ -33,15 +41,6 @@ ApplicationWindow {
         anchors.left: parent.left
         anchors.right:parent.right
         height: 40
-    }
-
-
-    LogBox {
-        id: logBox
-        anchors.top: deviceModel.connected ? deviceList.bottom : connectionBar.bottom
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
     }
 
     DeviceList {
