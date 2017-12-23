@@ -50,9 +50,6 @@ signals:
     void serverConnectedChanged(bool connected);
     void newDeviceReceived(Device device);
     void deviceConnectedChanged(QString name, bool connected);
-
-private:
-    bool mConnected = false;
 };
 
 #endif // INDICONNECTION_HPP
