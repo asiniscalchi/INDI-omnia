@@ -8,26 +8,6 @@ IndiConnection::IndiConnection(QObject *parent) : INDI::BaseClientQt(parent)
     qRegisterMetaType<Device>();
 }
 
-void IndiConnection::connect(QString host, int port)
-{
-    emit log("Connecting to host " + host + " port " + QString::number(port) + "...");
-    setServer(host.toStdString().c_str(), port);
-    bool ans = connectServer();
-
-    if (!ans)
-        emit log("(EE) can't connect");
-}
-
-bool IndiConnection::isConnected() const
-{
-    return isServerConnected();
-}
-
-void IndiConnection::disconnect()
-{
-    disconnectServer();
-}
-
 void IndiConnection::newDevice(INDI::BaseDevice *dp)
 {
     emit log("newDevice: " + QString(dp->getDeviceName()));

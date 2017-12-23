@@ -71,12 +71,15 @@ void IndiClient::selfDisconnectDevice(QString name)
 
 void IndiClient::selfConnect(QString host, int port)
 {
-    mConnection->connect(host, port);
+    emit log("Connecting to host " + host + " port " + QString::number(port) + "...");
+    mConnection->setServer(host.toStdString().c_str(), port);
+    if (mConnection->connectServer() == false)
+        emit log("(EE) can't connect");
 }
 
 void IndiClient::selfDisconnect()
 {
-    mConnection->disconnect();
+    mConnection->disconnectServer();
 }
 
 bool IndiClient::selfIsConnected() const
