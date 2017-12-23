@@ -28,6 +28,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 10
         height: parent.height * 0.8
+        width: 120
         enabled: !deviceModel.connected
         text: "localhost"
         anchors.verticalCenter: parent.verticalCenter
@@ -39,6 +40,7 @@ Rectangle {
         anchors.left: hostTextField.right
         anchors.leftMargin: 5
         height: parent.height * 0.8
+        width: 70
         enabled: !deviceModel.connected
         text: "7624"
         anchors.verticalCenter: parent.verticalCenter
@@ -51,7 +53,7 @@ Rectangle {
         anchors.rightMargin: 10
         anchors.verticalCenter: parent.verticalCenter
         height: parent.height * 0.85
-        width: 120
+        width: 100
         radius: 3
         color: "#38454f"
         Text {
