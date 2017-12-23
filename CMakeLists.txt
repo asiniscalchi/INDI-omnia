@@ -6,8 +6,8 @@ set (CMAKE_CXX_STANDARD 11)
 set (CMAKE_C_STANDARD 11)
 
 set(VERSION_MAJOR "0")
-set(VERSION_MINOR "0")
-set(VERSION_PATCH "1")
+set(VERSION_MINOR "2")
+set(VERSION_PATCH "0")
 configure_file (Version.h.in Version.h)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
