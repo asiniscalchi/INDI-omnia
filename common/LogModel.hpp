@@ -3,14 +3,14 @@
 
 #include <QStringListModel>
 
-#include <IndiConnection.hpp>
+#include <IndiClient.hpp>
 
 class LogModel : public QStringListModel
 {
     Q_OBJECT
 
 public:
-    explicit LogModel(IndiConnection& client, QObject* parent = nullptr);
+    explicit LogModel(IndiClient& client, QObject* parent = nullptr);
 
 private slots:
     void onLogReceived(QString log);

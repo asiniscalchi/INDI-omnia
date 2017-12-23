@@ -32,7 +32,7 @@ class IndiConnection : public INDI::BaseClientQt
 public:
     explicit IndiConnection(QObject *parent = nullptr);
 
-    bool connect(const QString& host, int port);
+
     bool isConnected() const;
     void disconnect();
 
@@ -48,6 +48,9 @@ public:
     void newMessage(INDI::BaseDevice *dp, int messageID) final;
     void serverConnected() final;
     void serverDisconnected(int exit_code) final;
+
+public slots:
+    void connect(QString host, int port);
 
 signals:
     void log(const QString& msg);

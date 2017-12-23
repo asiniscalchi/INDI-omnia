@@ -22,7 +22,7 @@
 #include <QIcon>
 
 #include "Version.h"
-#include "common/IndiConnection.hpp"
+#include "common/IndiClient.hpp"
 #include "common/DeviceModel.hpp"
 #include "common/DeviceModelFacade.hpp"
 #include "common/LogModel.hpp"
@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     QGuiApplication::setApplicationDisplayName(QGuiApplication::applicationName() + " " + QGuiApplication::applicationVersion());
     QGuiApplication::setWindowIcon(QIcon(":/magic_hat.svg"));
 
-    IndiConnection client;
+    IndiClient client;
     LogModel logModel(client);
     LogFilterModel logFilterModel;
     logFilterModel.setSourceModel(&logModel);

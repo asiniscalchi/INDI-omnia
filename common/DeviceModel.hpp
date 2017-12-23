@@ -24,7 +24,7 @@
 #include <QStringList>
 
 #include "Device.hpp"
-#include "IndiConnection.hpp"
+#include "IndiClient.hpp"
 
 class DeviceModel : public QAbstractListModel
 {
@@ -38,9 +38,9 @@ public:
         DeviceInterfaceRole
     };
 
-    DeviceModel(IndiConnection& client, QObject *parent = 0);
+    DeviceModel(IndiClient& client, QObject *parent = 0);
 
-    Q_INVOKABLE bool connect(const QString& host, int port);
+    Q_INVOKABLE void connect(const QString& host, int port);
     Q_INVOKABLE void disconnect();
     bool isConnected() const;
 
@@ -62,7 +62,7 @@ private slots:
 
 private:
     QList<Device> mDevices;
-    IndiConnection& mClient;
+    IndiClient& mClient;
 };
 
 #endif // DEVICEMODEL_HPP

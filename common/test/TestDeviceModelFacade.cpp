@@ -4,7 +4,7 @@
 
 void TestDeviceModelFacade::connectDeviceOnNotConnectedModel()
 {
-    IndiConnection client;
+    IndiClient client;
     DeviceModel model(client);
     DeviceModelFacade facede(model);
 

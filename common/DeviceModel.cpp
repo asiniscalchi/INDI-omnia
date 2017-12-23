@@ -3,21 +3,21 @@
 #include <QDebug>
 #include <QQmlEngine>
 
-DeviceModel::DeviceModel(IndiConnection &client, QObject *parent) : QAbstractListModel(parent)
+DeviceModel::DeviceModel(IndiClient &client, QObject *parent) : QAbstractListModel(parent)
   , mClient(client)
 {
-    QObject::connect(&mClient, &IndiConnection::serverConnectedChanged, this, &DeviceModel::onServerConnectedChanged, Qt::QueuedConnection);
-    QObject::connect(&mClient, &IndiConnection::newDeviceReceived, this, &DeviceModel::onAddDeviceReceived, Qt::QueuedConnection);
-    QObject::connect(&mClient, &IndiConnection::deviceConnectedChanged, this, &DeviceModel::onDeviceConnectedChanged, Qt::QueuedConnection);
+    QObject::connect(&mClient, &IndiClient::serverConnectedChanged, this, &DeviceModel::onServerConnectedChanged, Qt::QueuedConnection);
+    QObject::connect(&mClient, &IndiClient::newDeviceReceived, this, &DeviceModel::onAddDeviceReceived, Qt::QueuedConnection);
+    QObject::connect(&mClient, &IndiClient::deviceConnectedChanged, this, &DeviceModel::onDeviceConnectedChanged, Qt::QueuedConnection);
 }
 
-bool DeviceModel::connect(const QString &host, int port)
+void DeviceModel::connect(const QString &host, int port)
 {
-    return mClient.connect(host, port);
+    mClient.connect(host, port);
 }
 void DeviceModel::disconnect()
 {
-    mClient.disconnectServer();
+    mClient.disconnect();
 }
 
 bool DeviceModel::isConnected() const
