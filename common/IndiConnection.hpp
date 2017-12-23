@@ -1,5 +1,5 @@
-#ifndef INDICLIENT_HPP
-#define INDICLIENT_HPP
+#ifndef INDICONNECTION_HPP
+#define INDICONNECTION_HPP
 
 /*
 * Copyright (C) 2017 Alessandro Siniscalchi <asiniscalchi@gmail.com>
@@ -59,4 +59,4 @@ private:
     bool mConnected = false;
 };
 
-#endif // INDICLIENT_HPP
+#endif // INDICONNECTION_HPP
