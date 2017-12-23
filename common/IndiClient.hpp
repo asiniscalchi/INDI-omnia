@@ -3,15 +3,17 @@
 
 #include <QObject>
 
-class IndiClient : public QObject
+#include <QThread>
+
+class IndiClient final: public QObject
 {
     Q_OBJECT
 public:
     explicit IndiClient(QObject *parent = nullptr);
+    ~IndiClient();
 
-signals:
-
-public slots:
+private:
+    QThread mThread;
 };
 
 #endif // INDICLIENT_HPP
