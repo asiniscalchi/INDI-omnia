@@ -16,9 +16,9 @@ public:
     explicit IndiClient(QObject *parent = nullptr);
     ~IndiClient();
 
-    void connect(const QString& host, int port);
-    bool isConnected();
-    void disconnect();
+    void connectServer(const QString& host, int port);
+    bool isServerConnected();
+    void disconnectServer();
     void connectDevice(QString name);
     void disconnectDevice(QString name);
 

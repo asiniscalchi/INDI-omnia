@@ -18,19 +18,19 @@ IndiClient::~IndiClient()
     mThread.wait();
 }
 
-void IndiClient::connect(const QString &host, int port)
+void IndiClient::connectServer(const QString &host, int port)
 {
     QMetaObject::invokeMethod(this, "selfConnect", Q_ARG(QString, host), Q_ARG(int, port));
 }
 
-bool IndiClient::isConnected()
+bool IndiClient::isServerConnected()
 {
     bool connected = false;
     QMetaObject::invokeMethod(this, "selfIsConnected", Qt::BlockingQueuedConnection, Q_RETURN_ARG(bool, connected));
     return connected;
 }
 
-void IndiClient::disconnect()
+void IndiClient::disconnectServer()
 {
     QMetaObject::invokeMethod(this, "selfDisconnect");
 }

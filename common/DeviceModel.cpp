@@ -13,16 +13,16 @@ DeviceModel::DeviceModel(IndiClient &client, QObject *parent) : QAbstractListMod
 
 void DeviceModel::connect(const QString &host, int port)
 {
-    mClient.connect(host, port);
+    mClient.connectServer(host, port);
 }
 void DeviceModel::disconnect()
 {
-    mClient.disconnect();
+    mClient.disconnectServer();
 }
 
 bool DeviceModel::isConnected() const
 {
-    return mClient.isConnected();
+    return mClient.isServerConnected();
 }
 
 void DeviceModel::onAddDeviceReceived(const Device &device)
