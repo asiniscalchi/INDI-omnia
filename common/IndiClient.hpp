@@ -17,7 +17,7 @@ public:
     ~IndiClient();
 
     void connect(const QString& host, int port);
-    bool isConnected() const;
+    bool isConnected();
     void disconnect();
     void connectDevice(QString name);
     void disconnectDevice(QString name);
@@ -31,6 +31,11 @@ signals:
 private slots:
     void init();
     void deinit();
+    void selfConnectDevice(QString name);
+    void selfDisconnectDevice(QString name);
+    void selfConnect(QString host, int port);
+    void selfDisconnect();
+    bool selfIsConnected() const;
 
 private:
     QThread mThread;
