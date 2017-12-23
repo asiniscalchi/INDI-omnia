@@ -74,5 +74,6 @@ Rectangle {
         height: childrenRect.height
         model: deviceModel
         delegate: viewDelegate
+        interactive: false
     }
 }
