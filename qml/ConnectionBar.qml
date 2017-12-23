@@ -65,6 +65,8 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: deviceModel.connected ? deviceModel.disconnect() : deviceModel.connect(hostTextField.text, portTextField.text)
+            onPressed: rectangle.color = "black"
+            onReleased: rectangle.color = "#38454f"
         }
     }
 
