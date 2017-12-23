@@ -6,6 +6,8 @@ find_package(Qt5 COMPONENTS Qml REQUIRED)
 add_library(common
     IndiConnection.hpp
     IndiConnection.cpp
+    IndiClient.hpp
+    IndiClient.cpp
     DeviceModel.hpp
     DeviceModel.cpp
     Device.hpp
