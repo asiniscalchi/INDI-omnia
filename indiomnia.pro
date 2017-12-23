@@ -24,6 +24,7 @@ $$PWD/common \
 $$PWD/android
 
 HEADERS += \
+    common/IndiConnection.hpp \
     common/IndiClient.hpp \
     common/DeviceModel.hpp \
     common/DeviceModelFacade.hpp \
@@ -58,6 +59,7 @@ SOURCES += external/zlib/adler32.c \
     external/zlib/zlib.h \
     external/zlib/zutil.c \
     external/zlib/zutil.h \
+    common/IndiConnection.cpp \
     common/IndiClient.cpp \
     common/DeviceModel.cpp \
     common/Device.cpp \
