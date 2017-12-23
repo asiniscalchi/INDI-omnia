@@ -3,12 +3,12 @@
 #include "indibase/basedevice.h"
 #include "indibase/indistandardproperty.h"
 
-IndiClient::IndiClient(QObject *parent) : INDI::BaseClientQt(parent)
+IndiConnection::IndiConnection(QObject *parent) : INDI::BaseClientQt(parent)
 {
     qRegisterMetaType<Device>();
 }
 
-bool IndiClient::connect(const QString &host, int port)
+bool IndiConnection::connect(const QString &host, int port)
 {
     emit log("Connecting to host " + host + " port " + QString::number(port) + "...");
     setServer(host.toStdString().c_str(), port);
@@ -20,28 +20,28 @@ bool IndiClient::connect(const QString &host, int port)
     return ans;
 }
 
-bool IndiClient::isConnected() const
+bool IndiConnection::isConnected() const
 {
     return isServerConnected();
 }
 
-void IndiClient::disconnect()
+void IndiConnection::disconnect()
 {
     disconnectServer();
 }
 
-void IndiClient::newDevice(INDI::BaseDevice *dp)
+void IndiConnection::newDevice(INDI::BaseDevice *dp)
 {
     emit log("newDevice: " + QString(dp->getDeviceName()));
     emit newDeviceReceived(Device::fromBaseDevice(*dp));
 }
 
-void IndiClient::removeDevice(INDI::BaseDevice *dp)
+void IndiConnection::removeDevice(INDI::BaseDevice *dp)
 {
     emit log("removeDevice: " + QString(dp->getDeviceName()));
 }
 
-void IndiClient::newProperty(INDI::Property *property)
+void IndiConnection::newProperty(INDI::Property *property)
 {
     emit log("[" + QString(property->getDeviceName()) + "] newProperty : " + QString(property->getName()));
 
@@ -53,17 +53,17 @@ void IndiClient::newProperty(INDI::Property *property)
         emit deviceConnectedChanged(deviceName, property->getBaseDevice()->isConnected());
 }
 
-void IndiClient::removeProperty(INDI::Property *property)
+void IndiConnection::removeProperty(INDI::Property *property)
 {
     emit log("[" + QString(property->getDeviceName()) + "] removeProperty : " + QString(property->getName()));
 }
 
-void IndiClient::newBLOB(IBLOB *bp)
+void IndiConnection::newBLOB(IBLOB *bp)
 {
     emit log("[" + QString(bp->name) + "] newBLOB");
 }
 
-void IndiClient::newSwitch(ISwitchVectorProperty *svp)
+void IndiConnection::newSwitch(ISwitchVectorProperty *svp)
 {
     emit log("[" + QString(svp->device) + "] newSwitch : " + QString(svp->name));
 
@@ -78,33 +78,33 @@ void IndiClient::newSwitch(ISwitchVectorProperty *svp)
     }
 }
 
-void IndiClient::newNumber(INumberVectorProperty *nvp)
+void IndiConnection::newNumber(INumberVectorProperty *nvp)
 {
     emit log("[" + QString(nvp->device) + "] newNumber : " + QString(nvp->name));
 }
 
-void IndiClient::newText(ITextVectorProperty *tvp)
+void IndiConnection::newText(ITextVectorProperty *tvp)
 {
     emit log("[" + QString(tvp->device) + "] newText : " + QString(tvp->name));
 }
 
-void IndiClient::newLight(ILightVectorProperty *lvp)
+void IndiConnection::newLight(ILightVectorProperty *lvp)
 {
     emit log("[" + QString(lvp->device) + "] newLight");
 }
 
-void IndiClient::newMessage(INDI::BaseDevice *dp, int messageID)
+void IndiConnection::newMessage(INDI::BaseDevice *dp, int messageID)
 {
     emit log("[" + QString(dp->getDeviceName()) + "] newMessage");
 }
 
-void IndiClient::serverConnected()
+void IndiConnection::serverConnected()
 {
     emit log("server connected");
     emit serverConnectedChanged(true);
 }
 
-void IndiClient::serverDisconnected(int exit_code)
+void IndiConnection::serverDisconnected(int exit_code)
 {
     emit log("server disconnected (code=" + QString::number(exit_code) + ")");
     emit serverConnectedChanged(false);

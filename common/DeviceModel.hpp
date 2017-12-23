@@ -38,7 +38,7 @@ public:
         DeviceInterfaceRole
     };
 
-    DeviceModel(IndiClient& client, QObject *parent = 0);
+    DeviceModel(IndiConnection& client, QObject *parent = 0);
 
     Q_INVOKABLE bool connect(const QString& host, int port);
     Q_INVOKABLE void disconnect();
@@ -62,7 +62,7 @@ private slots:
 
 private:
     QList<Device> mDevices;
-    IndiClient& mClient;
+    IndiConnection& mClient;
 };
 
 #endif // DEVICEMODEL_HPP

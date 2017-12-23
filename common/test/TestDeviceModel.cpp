@@ -4,7 +4,7 @@
 
 void TestDeviceModel::countDevicesOnEmplyModel()
 {
-    IndiClient client;
+    IndiConnection client;
     DeviceModel model(client);
     QVERIFY(model.rowCount() == 0);
 }

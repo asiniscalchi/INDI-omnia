@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     QGuiApplication::setApplicationDisplayName(QGuiApplication::applicationName() + " " + QGuiApplication::applicationVersion());
     QGuiApplication::setWindowIcon(QIcon(":/magic_hat.svg"));
 
-    IndiClient client;
+    IndiConnection client;
     LogModel logModel(client);
     LogFilterModel logFilterModel;
     logFilterModel.setSourceModel(&logModel);

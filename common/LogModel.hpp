@@ -10,7 +10,7 @@ class LogModel : public QStringListModel
     Q_OBJECT
 
 public:
-    explicit LogModel(IndiClient& client, QObject* parent = nullptr);
+    explicit LogModel(IndiConnection& client, QObject* parent = nullptr);
 
 private slots:
     void onLogReceived(QString log);

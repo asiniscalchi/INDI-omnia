@@ -25,12 +25,12 @@
 
 #include "Device.hpp"
 
-class IndiClient : public INDI::BaseClientQt
+class IndiConnection : public INDI::BaseClientQt
 {
     Q_OBJECT
 
 public:
-    explicit IndiClient(QObject *parent = nullptr);
+    explicit IndiConnection(QObject *parent = nullptr);
 
     bool connect(const QString& host, int port);
     bool isConnected() const;

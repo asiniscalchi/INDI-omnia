@@ -4,7 +4,7 @@
 
 void TestIndiClient::instantiate()
 {
-    IndiClient client;
+    IndiConnection client;
 }
 
 QTEST_MAIN(TestIndiClient)
