@@ -1,4 +1,4 @@
-#include "IndiClient.hpp"
+#include "IndiConnection.hpp"
 
 #include "indibase/basedevice.h"
 #include "indibase/indistandardproperty.h"

@@ -22,7 +22,7 @@
 #include <QIcon>
 
 #include "Version.h"
-#include "common/IndiClient.hpp"
+#include "common/IndiConnection.hpp"
 #include "common/DeviceModel.hpp"
 #include "common/DeviceModelFacade.hpp"
 #include "common/LogModel.hpp"

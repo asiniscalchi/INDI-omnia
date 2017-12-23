@@ -4,8 +4,8 @@ set(CMAKE_AUTOMOC ON)
 find_package(Qt5 COMPONENTS Qml REQUIRED)
 
 add_library(common
-    IndiClient.hpp
-    IndiClient.cpp
+    IndiConnection.hpp
+    IndiConnection.cpp
     DeviceModel.hpp
     DeviceModel.cpp
     Device.hpp

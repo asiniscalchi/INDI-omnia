@@ -3,7 +3,7 @@
 
 #include <QStringListModel>
 
-#include <IndiClient.hpp>
+#include <IndiConnection.hpp>
 
 class LogModel : public QStringListModel
 {

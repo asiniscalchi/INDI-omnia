@@ -24,7 +24,7 @@
 #include <QStringList>
 
 #include "Device.hpp"
-#include "IndiClient.hpp"
+#include "IndiConnection.hpp"
 
 class DeviceModel : public QAbstractListModel
 {

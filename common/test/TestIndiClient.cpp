@@ -1,6 +1,6 @@
 #include "TestIndiClient.hpp"
 
-#include "IndiClient.hpp"
+#include "IndiConnection.hpp"
 
 void TestIndiClient::instantiate()
 {
