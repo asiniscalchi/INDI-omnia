@@ -17,9 +17,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 INCLUDEPATH += \
 $$PWD/external \
 $$PWD/external/zlib \
-$$PWD/external/libindi \
-$$PWD/external/libindi/libs \
-$$PWD/external/libindi/libs/indibase \
+$$PWD/external/indi/libindi \
+$$PWD/external/indi/libindi/libs \
+$$PWD/external/indi/libindi/libs/indibase \
 $$PWD/common \
 $$PWD/android
 
@@ -31,7 +31,7 @@ HEADERS += \
     common/LogModel.hpp \
     common/Device.hpp \
     common/LogFilterModel.hpp \
-    external/libindi/libs/indibase/baseclientqt.h \
+    external/indi/libindi/libs/indibase/baseclientqt.h \
 
 SOURCES += external/zlib/adler32.c \
     external/zlib/compress.c \
@@ -66,19 +66,19 @@ SOURCES += external/zlib/adler32.c \
     common/DeviceModelFacade.cpp \
     common/LogModel.cpp \
     common/LogFilterModel.cpp \
-    external/libindi/libs/lilxml.h \
-    external/libindi/libs/lilxml.c \
-    external/libindi/libs/indicom.h \
-    external/libindi/libs/indicom.c \
-    external/libindi/base64.h \
-    external/libindi/base64.c \
-    external/libindi/libs/indibase/basedevice.h \
-    external/libindi/libs/indibase/basedevice.cpp \
-    external/libindi/libs/indibase/baseclientqt.cpp \
-    external/libindi/libs/indibase/indiproperty.h \
-    external/libindi/libs/indibase/indiproperty.cpp \
-    external/libindi/libs/indibase/indistandardproperty.h \
-    external/libindi/libs/indibase/indistandardproperty.cpp \
+    external/indi/libindi/libs/lilxml.h \
+    external/indi/libindi/libs/lilxml.c \
+    external/indi/libindi/libs/indicom.h \
+    external/indi/libindi/libs/indicom.c \
+    external/indi/libindi/base64.h \
+    external/indi/libindi/base64.c \
+    external/indi/libindi/libs/indibase/basedevice.h \
+    external/indi/libindi/libs/indibase/basedevice.cpp \
+    external/indi/libindi/libs/indibase/baseclientqt.cpp \
+    external/indi/libindi/libs/indibase/indiproperty.h \
+    external/indi/libindi/libs/indibase/indiproperty.cpp \
+    external/indi/libindi/libs/indibase/indistandardproperty.h \
+    external/indi/libindi/libs/indibase/indistandardproperty.cpp \
     main.cpp
 
 RESOURCES += resources/resources.qrc qml/qml.qrc
