@@ -1,6 +1,6 @@
 #include "Device.hpp"
 
-Device Device::fromBaseDevice(const INDI::BaseDevice &baseDevice)
+Device Device::fromBaseDevice(INDI::BaseDevice &baseDevice)
 {
     Device device;
     device.name = QString(baseDevice.getDeviceName());

@@ -31,7 +31,7 @@ struct Device
     bool connected = false;
     QString deviceInterface;
 
-    static Device fromBaseDevice(const INDI::BaseDevice &baseDevice);
+    static Device fromBaseDevice(INDI::BaseDevice &baseDevice);
 };
 
 Q_DECLARE_METATYPE(Device)
