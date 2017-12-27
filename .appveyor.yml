@@ -3,20 +3,22 @@ pull_requests:
   do_not_increment_build_number: true
 configuration: Release
 platform: x64
-clone_folder: c:\indi-omnia
+clone_folder: c:\indiomnia
 environment:
   QTDIR: C:\Qt\5.9.2\msvc2015_64
   PATH: '%PATH%;%QTDIR%\bin;C:\MinGW\bin'
 before_build:
 - cmd: >-
-    cd c:\indi-omnia
+    cd c:\indiomnia
+
+    git submodule update --init --recursive
 
     mkdir build && cd build
 
     cmake -G "Visual Studio 14 2015 Win64" ..
 
 build:
-  project: c:\indi-omnia\build\INSTALL.vcxproj
+  project: c:\indiomnia\build\INSTALL.vcxproj
   parallel: true
   verbosity: minimal
 after_build:
