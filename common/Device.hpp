@@ -29,7 +29,6 @@ struct Device
 {
     QString name;
     bool connected = false;
-    QString deviceInterface;
 
     static Device fromBaseDevice(INDI::BaseDevice &baseDevice);
 };

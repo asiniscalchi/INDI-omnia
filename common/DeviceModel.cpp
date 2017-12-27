@@ -78,8 +78,6 @@ QVariant DeviceModel::data(const QModelIndex & index, int role) const {
         return device.name;
     case ConnectedRole:
         return device.connected;
-    case DeviceInterfaceRole:
-        return device.deviceInterface;
     default:
         break;
     }
@@ -90,7 +88,6 @@ QHash<int, QByteArray> DeviceModel::roleNames() const {
     QHash<int, QByteArray> roles;
     roles[TypeRole] = "name";
     roles[ConnectedRole] = "connected";
-    roles[DeviceInterfaceRole] = "deviceInterface";
     return roles;
 }
 

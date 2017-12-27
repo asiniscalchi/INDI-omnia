@@ -35,7 +35,6 @@ public:
     enum DeviceRoles {
         TypeRole = Qt::UserRole + 1,
         ConnectedRole,
-        DeviceInterfaceRole
     };
 
     DeviceModel(IndiClient& client, QObject *parent = 0);

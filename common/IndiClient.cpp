@@ -48,10 +48,10 @@ void IndiClient::disconnectDevice(QString name)
 void IndiClient::init()
 {
     mConnection = new IndiConnection;
-    QObject::connect(mConnection, &IndiConnection::log, this, &IndiClient::log);
-    QObject::connect(mConnection, &IndiConnection::serverConnectedChanged, this, &IndiClient::serverConnectedChanged);
-    QObject::connect(mConnection, &IndiConnection::newDeviceReceived, this, &IndiClient::newDeviceReceived);
-    QObject::connect(mConnection, &IndiConnection::deviceConnectedChanged, this, &IndiClient::deviceConnectedChanged);
+    QObject::connect(mConnection, &IndiConnection::log, this, &IndiClient::log, Qt::QueuedConnection);
+    QObject::connect(mConnection, &IndiConnection::serverConnectedChanged, this, &IndiClient::serverConnectedChanged, Qt::QueuedConnection);
+    QObject::connect(mConnection, &IndiConnection::newDeviceReceived, this, &IndiClient::newDeviceReceived, Qt::QueuedConnection);
+    QObject::connect(mConnection, &IndiConnection::deviceConnectedChanged, this, &IndiClient::deviceConnectedChanged, Qt::QueuedConnection);
 }
 
 void IndiClient::deinit()
